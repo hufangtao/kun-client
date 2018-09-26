@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "73c7abdb-7d65-4791-ab78-d55f088d643e",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "如何玩": {
+      "ver": "1.0.3",
+      "uuid": "ef99c21e-3b22-4a78-9285-db848f6649ce",
+      "rawTextureUuid": "73c7abdb-7d65-4791-ab78-d55f088d643e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 635,
+      "height": 1045,
+      "rawWidth": 635,
+      "rawHeight": 1045,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

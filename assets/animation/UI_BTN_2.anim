@@ -1,0 +1,87 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "rotation",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 3.433333333333333,
+  "sample": 30,
+  "speed": 1,
+  "wrapMode": "2",
+  "curveData": {
+    "props": {
+      "rotation": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 0.3,
+          "value": 36
+        },
+        {
+          "frame": 0.5666666666666667,
+          "value": -31
+        },
+        {
+          "frame": 1,
+          "value": 46
+        },
+        {
+          "frame": 1.3333333333333333,
+          "value": 0
+        },
+        {
+          "frame": 1.9666666666666666,
+          "value": 0
+        },
+        {
+          "frame": 3.433333333333333,
+          "value": 0
+        }
+      ],
+      "scale": [
+        {
+          "frame": 1.9666666666666666,
+          "value": {
+            "__type__": "cc.Vec2",
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "frame": 2.2333333333333334,
+          "value": {
+            "__type__": "cc.Vec2",
+            "x": 1.2,
+            "y": 1.2
+          }
+        },
+        {
+          "frame": 2.466666666666667,
+          "value": {
+            "__type__": "cc.Vec2",
+            "x": 1.1,
+            "y": 1.1
+          }
+        },
+        {
+          "frame": 2.7,
+          "value": {
+            "__type__": "cc.Vec2",
+            "x": 1.2,
+            "y": 1.2
+          }
+        },
+        {
+          "frame": 2.933333333333333,
+          "value": {
+            "__type__": "cc.Vec2",
+            "x": 1,
+            "y": 1
+          }
+        }
+      ]
+    }
+  },
+  "events": []
+}
