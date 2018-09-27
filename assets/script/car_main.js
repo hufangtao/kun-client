@@ -275,7 +275,7 @@ cc.Class({
 
     },
     JB_ShowMeiQuan(){
-    	this.lbl_jb_meiquan.string = cc.gg.userData.mqcoin*cc.gg.jiasu + "/秒";
+    	this.lbl_jb_meiquan.string = cc.gg.getNumString(cc.gg.userData.mqcoin*cc.gg.jiasu) + "/秒";
     },
     ZS_ShowCount(){
     	this.lbl_zs.string = cc.gg.userData.gem;
