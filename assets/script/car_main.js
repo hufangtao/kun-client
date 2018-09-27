@@ -57,7 +57,7 @@ cc.Class({
     	for(let i=0;i<35;i++){
     		cc.gg.coin.push(parseInt(cc.gg.coin[i]*2));
     	}
-    	cc.gg.level_times = [12,11.82,11.65,11.47,11.29,11.12,10.94,10.76,10.59,10.41,10.24,10.06,9.88,9.71,9.53,9.35,9.18,9,8.82,8.65,8.47,8.29,8.12,7.94,7.76,7.59,7.41,7.24,7.06,6.88,6.71,6.53,6.35,6.18,6];
+    	cc.gg.level_times = [12,11.9,11.8,11.7,11.6,11.5,11.4,11.3,11.2,11.1,11,10.9,10.8,10.7,10.6,10.5,10.4,10.3,10.2,10.1,10,9.9,9.8,9.7,9.6,9.5,9.4,9.3,9.2,9.1,9,8.9,8.8,8.7];
     	//console.log(cc.gg.coin_s);
     	//console.log(cc.gg.coin);
     	cc.gg.sceneNode = this.node;
@@ -468,7 +468,7 @@ cc.Class({
 	        	//已解锁
 	        	let b1 = null;
 	        	let itemcoin =  this.kunsConfig[i].coin;
-	        	let iszs = zslevel.hasOwnProperty(i+1);
+	        	//let iszs = zslevel.hasOwnProperty(i+1);
 
 	        	if(cc.gg.userData.buy_coin.length<=i){
 	        		cc.gg.userData.buy_coin.push(itemcoin)
@@ -476,31 +476,31 @@ cc.Class({
 	        		itemcoin = cc.gg.userData.buy_coin[i];
 	        	}  
 
-	        	if(iszs) {
-	        		b1 = n.getChildByName("btn_buy_zs");
-	        		itemcoin = zslevel[i+1] ;
-	        	}else{
+	        	// if(iszs) {
+	        	// 	b1 = n.getChildByName("btn_buy_zs");
+	        	// 	itemcoin = zslevel[i+1] ;
+	        	// }else{
 	        		b1 = n.getChildByName("btn_buy");	        		
-	        	} 
+	        	//} 
 	        	b1.active = true; 
 	        	b1.getChildByName("num").getComponent(cc.Label).string = cc.gg.getNumString(itemcoin,3);  
 	        	let money = itemcoin;
 	        	
 		        b1.on("touchstart",function(){
-
+                    this.onBuyCar(null,i,money);
 		        	//购买
-		        	if(!iszs)this.onBuyCar(null,i,money);
-		            else{
-		            	if(cc.gg.userData.gem<money){
-		            		cc.gg.showTip("钻石数量不足");
-		            		return;
-		            	}else{
-		            		cc.gg.userData.gem -= money;
-		            		this.onBuyCar(null,i,0);
-		            		this.ZS_ShowCount();
+		        	//if(!iszs)this.onBuyCar(null,i,money);
+		        //     else{
+		        //     	if(cc.gg.userData.gem<money){
+		        //     		cc.gg.showTip("钻石数量不足");
+		        //     		return;
+		        //     	}else{
+		        //     		cc.gg.userData.gem -= money;
+		        //     		this.onBuyCar(null,i,0);
+		        //     		this.ZS_ShowCount();
 
-		            	}
-		            }
+		        //     	}
+		        //    //}
 		             this.initMallItem(sc.getScrollOffset());
 
 		        },this);
