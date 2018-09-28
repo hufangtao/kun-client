@@ -28,6 +28,8 @@ cc.Class({
         this.prg.node.active = false;
         this.startPreloading();
         cc.director.preloadScene("car_start");
+
+        console.log(Partner.getPlatform());
     },
 
   

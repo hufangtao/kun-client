@@ -105,7 +105,7 @@ var Global = cc.Class({
                 key:key,
                 value:value
             }
-            cc.gg.http.sendRequest("/setinfo",data,function(ret){
+            cc.gg.http.sendRequestByGet("/setinfo",data,function(ret){
                 if(ret.errcode==102 || ret.errcode==103){
                     cc.gg.showTip("已断开连接!",5);
                     cc.gg.online = false;

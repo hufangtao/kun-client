@@ -98,7 +98,7 @@ cc.Class({
             t:cc.gg.userData.t,
             token:cc.gg.userData.token
         }
-        cc.gg.http.sendRequest("/worldrank",data,function(ret){
+        cc.gg.http.sendRequestByGet("/worldrank",data,function(ret){
             self.initworldrank(ret.data);
             
         });

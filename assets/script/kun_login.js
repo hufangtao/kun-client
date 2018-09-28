@@ -15,7 +15,7 @@ cc.Class({
     onlogin(){
         cc.gg.online = false;
     	if(this.account.string=="" ||  ""==this.pw.string)return;
-    	cc.gg.http.sendRequest("/login",{account:this.account.string,pw:this.pw.string},ret=>{
+    	cc.gg.http.sendRequestByGet("/login",{account:this.account.string,pw:this.pw.string},ret=>{
     		if(ret.errcode==0){
     			cc.gg.userData = ret.data;
     			if(cc.gg.userData.park!=null && cc.gg.userData.park !="") cc.gg.userData.park = JSON.parse(ret.data.park);
@@ -33,7 +33,7 @@ cc.Class({
 
     onregist(){
     	if(this.account.string=="" ||  ""==this.pw.string)return;
-    	cc.gg.http.sendRequest("/regist",{account:this.account.string,pw:this.pw.string},ret=>{
+    	cc.gg.http.sendRequestByGet("/regist",{account:this.account.string,pw:this.pw.string},ret=>{
     		if(ret.errcode==0){
     			console.log("注册成功");
                 cc.gg.showTip("注册成功,请登陆.");

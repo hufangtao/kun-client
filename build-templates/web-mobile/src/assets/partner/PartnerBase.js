@@ -18,7 +18,7 @@
 		return obj;
 	}
 
-	Partner.PARTNER_NAME = "通用";
+	Partner.PARTNER_NAME = "Dev";
 
 	Partner.extends = function () {
 		var obj = {};
@@ -29,8 +29,7 @@
 
 	Partner.getPlatform = function () {
 		return Partner.PARTNER_NAME;
-	}
-
-
+  }
+  
 	global.Partner = Partner;
 }));
