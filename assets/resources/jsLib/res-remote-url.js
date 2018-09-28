@@ -11,8 +11,9 @@
 
   ResRemoteUrl.ID = ID;
   ResRemoteUrl.prototype.handle = function (item, callback) {
-    console.log("#######url:", item);
+    //console.log("#######url:", item);
     callback(null, null);
+    return;
 
     if (REGEX.test(item.url)) {
       callback(null, null);
