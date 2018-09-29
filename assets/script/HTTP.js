@@ -1,0 +1,90 @@
+var URL = "http://132.232.82.31:9000";
+URL = "http://192.168.20.84:9000";
+
+var HTTP = cc.Class({
+    extends: cc.Component,
+
+    statics:{
+        sessionId : 0,
+        userId : 0,
+        master_url:URL,
+        url:URL,
+        sendRequestByGet : function(path,data,handler,extraUrl){
+            var xhr = cc.loader.getXMLHttpRequest();
+            xhr.timeout = 5000;
+            var str = "?";
+            for(var k in data){
+                if(str != "?"){
+                    str += "&";
+                }
+                str += k + "=" + data[k];
+            }
+            if(extraUrl == null){
+                extraUrl = HTTP.url;
+            }
+            var requestURL = extraUrl + path + encodeURI(str);
+          //  console.log("RequestURL:" + requestURL);
+            xhr.open("GET",requestURL, true);
+            if (cc.sys.isNative){
+                xhr.setRequestHeader("Accept-Encoding","gzip,deflate","text/html;charset=UTF-8");
+            }
+            
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState === 4 && (xhr.status >= 200 && xhr.status < 300)){
+                    // console.log("http res("+ xhr.responseText.length + "):" + xhr.responseText);
+                    try {
+                        var ret = JSON.parse(xhr.responseText);
+                        if(handler !== null){
+                        	//console.log(ret);
+                            handler(ret);
+                        }                     
+                    } catch (e) {
+                        console.log("err:" + e);
+                        //handler(null);
+                    }
+                    finally{
+                    	//console.log("error");
+                        
+                    }
+                }
+            };
+            
+            xhr.send();
+            return xhr;
+        },
+        sendRequestByPost : function(path,data,handler,extraUrl){
+            var xhr = cc.loader.getXMLHttpRequest();
+            xhr.timeout = 5000;
+            if(extraUrl == null){
+                extraUrl = HTTP.url;
+            }
+            var requestURL = extraUrl + path;
+            xhr.open("POST",requestURL, true); // 第三个参数为是否异步
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            xhr.send(data);
+            
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState === 4 && (xhr.status >= 200 && xhr.status < 300)){
+                    // console.log("http res("+ xhr.responseText.length + "):" + xhr.responseText);
+                    try {
+                        var ret = JSON.parse(xhr.responseText);
+                        if(handler !== null){
+                        	//console.log(ret);
+                            handler(ret);
+                        }                     
+                    } catch (e) {
+                        console.log("err:" + e);
+                        //handler(null);
+                    }
+                    finally{
+                    	//console.log("error");
+                        
+                    }
+                }
+            };
+            
+            xhr.send();
+            return xhr;
+        }
+    },
+});
