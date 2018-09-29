@@ -160,7 +160,7 @@
     "_N$lineHeight": 50,
     "_N$imageAtlas": null,
     "_N$handleTouchEvent": true,
-    "_id": "c1YQ1bkaFCNKtZs2TCmxRp"
+    "_id": ""
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -199,25 +199,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "8f3RXktLxE9axtHKofMJqK"
-  },
-  {
-    "__type__": "158a6WTErJJvYu9qpDs3Z5X",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "lbl_title": null,
-    "lbl_content": {
-      "__id__": 3
-    },
-    "lbl_ok_tip": null,
-    "lbl_cancel_tip": null,
-    "_onokclick": null,
-    "_oncancelclick": null,
-    "_id": "d6GOGUoC9P/bNVsZq6fvmN"
+    "_id": ""
   },
   {
     "__type__": "cc.Layout",
@@ -249,7 +231,20 @@
     "_N$spacingY": 0,
     "_N$verticalDirection": 1,
     "_N$horizontalDirection": 0,
-    "_id": "4dAKFnqz9HVq2S0mJNYnbm"
+    "_id": ""
+  },
+  {
+    "__type__": "0b921KSL6VKRqhaM5qCnlhv",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "lbl_content": {
+      "__id__": 3
+    },
+    "_id": ""
   },
   {
     "__type__": "cc.PrefabInfo",

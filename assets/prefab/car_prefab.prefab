@@ -100,33 +100,20 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "0dtBOG/hRD3pm3+BpOksxz"
+    "_id": ""
   },
   {
-    "__type__": "533e9ac7yRK2bzHePxeehY0",
+    "__type__": "20e4cdDQeBCRr3Q1v+uArWy",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
-    "index": 0,
-    "carid": 0,
-    "car_copy": null,
-    "parkpos": null,
-    "b_isRunning": false,
-    "wayid": 0,
-    "speed": 300,
-    "state": 0,
-    "coin_quan": 0,
     "pb_hecheng": {
       "__uuid__": "0b0c5d67-9eef-4f78-ba13-b3d165f0038a"
     },
-    "bsetime": 1,
-    "angle": null,
-    "js_time": 0,
-    "js_num": 0,
-    "_id": "c487aO5GJLULqghHiDcQkw"
+    "_id": ""
   },
   {
     "__type__": "cc.PrefabInfo",

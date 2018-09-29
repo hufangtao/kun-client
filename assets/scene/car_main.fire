@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.25869140625,
-      "y": 0.25869140625,
+      "x": 0.32319131740405543,
+      "y": 0.32319131740405543,
       "z": 1
     },
     "_quat": {
@@ -1509,7 +1509,7 @@
   {
     "__type__": "cc.Node",
     "_name": "jbnum_mask",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": {
       "__id__": 2
     },
@@ -11236,7 +11236,7 @@
     "_id": "8e2zI3x/ZOKaqLrOInC++T"
   },
   {
-    "__type__": "0eeedxh7XROQo2ZS3XRMKgh",
+    "__type__": "632d53nLtBGc6LHxgX7OWWU",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -11250,7 +11250,6 @@
     "huishouNode": {
       "__id__": 55
     },
-    "runwaystart": [],
     "json_sc_config": {
       "__uuid__": "32cbfe63-ad0e-40de-b27a-3c8e8d9d9826"
     },
@@ -11285,7 +11284,6 @@
     "lbl_zs": {
       "__id__": 60
     },
-    "cj_time": 0,
     "cj_time_lbl": {
       "__id__": 106
     },
@@ -11301,9 +11299,6 @@
     "lbl_jiasu": {
       "__id__": 88
     },
-    "running": 0,
-    "park": null,
-    "js_time": 0,
     "jiasu_lizi": {
       "__id__": 108
     },
@@ -11313,10 +11308,9 @@
     "lbl_jb_bottom": {
       "__id__": 35
     },
-    "b_jb_act_isend": true,
-    "kunsConfig": {
+    "kunsJsonAsset": {
       "__uuid__": "43ac43cb-24c6-4d74-b7fb-209ea2fd48c4"
     },
-    "_id": "56DQZq7edIzZSS4ObY1xEO"
+    "_id": "96ShKn5wRNlr18dPpJjhlK"
   }
 ]

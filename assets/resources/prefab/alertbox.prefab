@@ -77,7 +77,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 174,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": ""
   },
@@ -140,7 +140,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 91,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": ""
   },
@@ -160,7 +160,7 @@
     "_N$lineHeight": 50,
     "_N$imageAtlas": null,
     "_N$handleTouchEvent": true,
-    "_id": "1bxdSm+DdImpdo6vYGWwQF"
+    "_id": ""
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -199,7 +199,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "6f/XkiJjRO1IyGjIcpUvjb"
+    "_id": ""
   },
   {
     "__type__": "cc.Layout",
@@ -231,25 +231,20 @@
     "_N$spacingY": 0,
     "_N$verticalDirection": 1,
     "_N$horizontalDirection": 0,
-    "_id": "3dAXerhQRMZZRZu+oLWjDi"
+    "_id": ""
   },
   {
-    "__type__": "158a6WTErJJvYu9qpDs3Z5X",
+    "__type__": "0b921KSL6VKRqhaM5qCnlhv",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
-    "lbl_title": null,
     "lbl_content": {
       "__id__": 3
     },
-    "lbl_ok_tip": null,
-    "lbl_cancel_tip": null,
-    "_onokclick": null,
-    "_oncancelclick": null,
-    "_id": "86vGcYNi1Lmq9S05ei2cQi"
+    "_id": ""
   },
   {
     "__type__": "cc.PrefabInfo",
