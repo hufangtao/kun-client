@@ -11,7 +11,7 @@ export default class HTTP extends cc.Component {
     public static master_url: URL = null;
     public static url: string = "http://192.168.20.173:9000";
 
-    public static sendRequest(path, data, handler, extraUrl = null) {
+    public static sendRequestGet(path, data, handler, extraUrl = null) {
         const xhr = cc.loader.getXMLHttpRequest();
         xhr.timeout = 5000;
         let str = "?";
@@ -53,6 +53,39 @@ export default class HTTP extends cc.Component {
         };
         
         xhr.send();
+        return xhr;
+    }
+
+    public static sendRequestPost(path, data, handler, extraUrl = null) {
+        const xhr = cc.loader.getXMLHttpRequest();
+        xhr.timeout = 5000;
+        if (extraUrl === null) {
+            extraUrl = HTTP.url;
+        }
+        const requestURL = extraUrl + path;
+        //  console.log("RequestURL:" + requestURL);
+        xhr.open("POST", requestURL, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        
+        
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status < 300)) {
+                // console.log("http res("+ xhr.responseText.length + "):" + xhr.responseText);
+                try {
+                    const ret = JSON.parse(xhr.responseText);
+                    if (handler !== null) {
+                        // console.log(ret);
+                        handler(ret);
+                    }                     
+                } catch (e) {
+                    console.log("err:" + e);
+                    // handler(null);
+                } finally {
+                    // console.log("error");
+                }
+            }
+        };
+        xhr.send(data);
         return xhr;
     }
 }
