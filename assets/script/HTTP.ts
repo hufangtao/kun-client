@@ -76,14 +76,11 @@ export default class HTTP extends cc.Component {
                     }                     
                 } catch (e) {
                     console.log("err:" + e);
-                    // handler(null);
                 } finally {
-                    // console.log("error");
                 }
             }
         };
         xhr.send(JSON.stringify(data));
-        // xhr.send(data);
         return xhr;
     }
 }

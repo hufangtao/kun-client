@@ -13,6 +13,7 @@ export default class car_main extends cc.Component {
     private park: any[] = null;
     private js_time: number = 0;
     private b_jb_act_isend: boolean = true; // 金币动画结束标志
+    private mLastId = 0;
 
     @property(cc.Prefab)
     private car_prefab: cc.Prefab = null;
@@ -449,7 +450,10 @@ export default class car_main extends cc.Component {
         }
     }
 
-    public onBuyCar(event, id = 0, coin = null) {
+    public onBuyCar(event, id = null, coin = null) {
+        if (id === null) {
+            id = this.mLastId;
+        }
         coin = coin === null ? Define.userData.buy_coin[id] : coin;
         if (Define.userData.coin < coin) {
             console.log("金币不足");
@@ -466,6 +470,7 @@ export default class car_main extends cc.Component {
                 this.park[i].car.init(i, this.park[i].pos, id);
                 Define.userData.buy_coin[id] = Math.floor(Define.userData.buy_coin[id] * 1.07);
                 this.lbl_jb_maiche.string = global.getNumString(Define.userData.buy_coin[id]);
+                this.mLastId = id;
                 this.JB_ShowCount();
                 return;
             }
