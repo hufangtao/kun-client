@@ -26,7 +26,7 @@ export default class kun_login extends cc.Component {
 			return; 
 		}
 		// HTTP.sendRequest("/login", {account: this.account.string, pw: this.pw.string}, (ret) => {
-		HTTP.sendRequestGet("/login", {account: this.account.string}, (ret) => {
+		HTTP.sendRequestPost("/login", {account: this.account.string}, (ret) => {
 			if (ret.errcode === 0) {
 				Define.userData = ret.data;
 				if (Define.userData.park !== null && Define.userData.park !== "") { 

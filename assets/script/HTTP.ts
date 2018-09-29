@@ -9,6 +9,7 @@ export default class HTTP extends cc.Component {
     public static sessionId: number = 0;
     public static userId: number = 0;
     public static master_url: URL = null;
+    // public static url: string = "http://192.168.20.173:9000";
     public static url: string = "http://192.168.20.173:9000";
 
     public static sendRequestGet(path, data, handler, extraUrl = null) {
@@ -63,10 +64,10 @@ export default class HTTP extends cc.Component {
             extraUrl = HTTP.url;
         }
         const requestURL = extraUrl + path;
-        //  console.log("RequestURL:" + requestURL);
+        console.log("RequestdataL:", data);
         xhr.open("POST", requestURL, true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        
+        // xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8");
         
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status < 300)) {
@@ -85,6 +86,7 @@ export default class HTTP extends cc.Component {
                 }
             }
         };
+        // xhr.send(JSON.stringify(data));
         xhr.send(data);
         return xhr;
     }
