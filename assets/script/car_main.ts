@@ -319,7 +319,8 @@ export default class car_main extends cc.Component {
     }
 
     public JB_ShowMeiQuan() {
-        this.lbl_jb_meiquan.string = Define.userData.mqcoin * Define.jiasu + "/秒";
+        this.lbl_jb_meiquan.string = global.getNumString(Define.userData.mqcoin * Define.jiasu) + "/秒";
+        // this.lbl_jb_meiquan.string = Define.userData.mqcoin * Define.jiasu + "/秒";
     }
 
     public ZS_ShowCount() {
