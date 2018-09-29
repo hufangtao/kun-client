@@ -64,18 +64,14 @@ export default class HTTP extends cc.Component {
             extraUrl = HTTP.url;
         }
         const requestURL = extraUrl + path;
-        console.log("RequestdataL:", data);
         xhr.open("POST", requestURL, true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        // xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8");
         
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status < 300)) {
-                // console.log("http res("+ xhr.responseText.length + "):" + xhr.responseText);
                 try {
                     const ret = JSON.parse(xhr.responseText);
                     if (handler !== null) {
-                        // console.log(ret);
                         handler(ret);
                     }                     
                 } catch (e) {
@@ -86,8 +82,8 @@ export default class HTTP extends cc.Component {
                 }
             }
         };
-        // xhr.send(JSON.stringify(data));
-        xhr.send(data);
+        xhr.send(JSON.stringify(data));
+        // xhr.send(data);
         return xhr;
     }
 }

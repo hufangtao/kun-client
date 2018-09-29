@@ -97,13 +97,9 @@ export default class car_main extends cc.Component {
         for (let i = 0; i < 35; i++) {
             Define.coin.push(Math.floor(Define.coin[i] * 2));
         }
-
-        console.log("Define.coin", Define.coin);
         Define.level_times = [12, 11.82, 11.65, 11.47, 11.29, 11.12, 10.94, 10.76, 10.59, 10.41, 10.24, 10.06, 9.88, 9.71, 9.53, 9.35, 9.18, 9, 8.82, 8.65, 8.47, 8.29, 8.12, 7.94, 7.76, 7.59, 7.41, 7.24, 7.06, 6.88, 6.71, 6.53, 6.35, 6.18, 6];
         // console.log(Define.coin_s);
         // console.log(Define.coin);
-        console.log("config:===", this.kunsConfig);
-        console.log("level_times:===", Define.level_times);
         Define.sceneNode = this.node;
         this.runwaystart.push(cc.v2(-282, -199));
         this.runwaystart.push(cc.v2(-282, 256));
@@ -537,7 +533,7 @@ export default class car_main extends cc.Component {
                 // } else {
                 //     b1 = n.getChildByName("btn_buy");	        		
                 // } 
-                
+
                 // 无钻石购买逻辑
                 b1 = n.getChildByName("btn_buy");
 
@@ -562,14 +558,7 @@ export default class car_main extends cc.Component {
                     // }
 
                     // 无钻石购买逻辑
-                    if (Define.userData.gem < money) {
-                        global.showTip("钻石数量不足");
-                        return;
-                    } else {
-                        Define.userData.gem -= money;
-                        this.onBuyCar(null, i, 0);
-                        this.ZS_ShowCount();
-                    }
+                    this.onBuyCar(null, i, money); 
 
 
                     this.initMallItem(sc.getScrollOffset());
