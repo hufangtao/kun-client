@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.32319131740405543,
-      "y": 0.32319131740405543,
+      "x": 0.63671875,
+      "y": 0.63671875,
       "z": 1
     },
     "_quat": {
@@ -308,7 +308,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "qipao",
+    "_name": "nodLyQiPao",
     "_objFlags": 0,
     "_parent": {
       "__id__": 5
@@ -1576,7 +1576,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "bottom",
+    "_name": "labJbBottom",
     "_objFlags": 0,
     "_parent": {
       "__id__": 33
@@ -1664,7 +1664,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "top",
+    "_name": "labJbTop",
     "_objFlags": 0,
     "_parent": {
       "__id__": 33
@@ -1922,7 +1922,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "labJbMaiche",
     "_objFlags": 0,
     "_parent": {
       "__id__": 40
@@ -2440,7 +2440,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "hs",
+    "_name": "nodHuiShouNode",
     "_objFlags": 0,
     "_parent": {
       "__id__": 39
@@ -2650,7 +2650,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "labZs",
     "_objFlags": 0,
     "_parent": {
       "__id__": 58
@@ -3684,7 +3684,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "runningcount",
+    "_name": "labRunning",
     "_objFlags": 0,
     "_parent": {
       "__id__": 84
@@ -3772,7 +3772,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "lbl_jiasu",
+    "_name": "labJiaSu",
     "_objFlags": 0,
     "_parent": {
       "__id__": 84
@@ -4116,7 +4116,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "jb_mq",
+    "_name": "labJbMeiQuan",
     "_objFlags": 0,
     "_parent": {
       "__id__": 91
@@ -4386,7 +4386,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "jb_count",
+    "_name": "labJbCount",
     "_objFlags": 0,
     "_parent": {
       "__id__": 97
@@ -4554,7 +4554,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "lbl_cjtime",
+    "_name": "labCjTime",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -4642,7 +4642,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "jb_anim",
+    "_name": "nodJb",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -4699,7 +4699,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "jslizi",
+    "_name": "parJiaSu",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -7467,7 +7467,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "num",
+    "_name": "labJbCount2",
     "_objFlags": 0,
     "_parent": {
       "__id__": 169
@@ -7501,7 +7501,7 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 34,
+      "x": 34.00000000000003,
       "y": 0,
       "z": 0
     },
@@ -11243,72 +11243,67 @@
       "__id__": 2
     },
     "_enabled": true,
-    "car_prefab": {
+    "pfbCar": {
       "__uuid__": "1c926f76-154d-408d-8f21-2a22f4dd8245"
     },
-    "parkNode": null,
-    "huishouNode": {
+    "nodHuiShouNode": {
       "__id__": 55
     },
-    "json_sc_config": {
-      "__uuid__": "32cbfe63-ad0e-40de-b27a-3c8e8d9d9826"
-    },
-    "prefabMallItem": {
+    "pfbMallItem": {
       "__uuid__": "204eb202-b580-4613-9cc6-1099e61e84cf"
     },
-    "prefabJB": {
+    "pfbJB": {
       "__uuid__": "16a48f0d-de95-4edb-b28a-9ec90baf81e7"
     },
-    "jb_node": {
+    "nodJb": {
       "__id__": 107
     },
-    "prefabJB_lbl": {
+    "pfbJbAdd": {
       "__uuid__": "c6ac6908-e4f9-4f41-bdae-17eedf798209"
     },
-    "lbl_jb_meiquan": {
+    "labJbMeiQuan": {
       "__id__": 95
     },
-    "lbl_jb_count": {
+    "labJbCount": {
       "__id__": 101
     },
-    "lbl_jb_count2": {
+    "labJbCount2": {
       "__id__": 171
     },
-    "lbl_jb_maiche": {
+    "labJbMaiche": {
       "__id__": 42
     },
-    "lbl_running": {
+    "labRunning": {
       "__id__": 86
     },
-    "prefab_sc": null,
-    "lbl_zs": {
+    "labZs": {
       "__id__": 60
     },
-    "cj_time_lbl": {
+    "labCjTime": {
       "__id__": 106
     },
-    "sp_qipao_1": {
+    "sprQiPao1": {
       "__uuid__": "5d14ca87-6172-41e0-84a1-e646e0f7a6ab"
     },
-    "sp_qipao_2": {
+    "sprQiPao2": {
       "__uuid__": "0506d49d-9c51-4ba0-b91a-d3512ab97819"
     },
-    "ly_qipao": {
+    "nodLyQiPao": {
       "__id__": 6
     },
-    "lbl_jiasu": {
+    "labJiaSu": {
       "__id__": 88
     },
-    "jiasu_lizi": {
+    "parJiaSu": {
       "__id__": 108
     },
-    "lbl_jb_top": {
+    "labJbTop": {
       "__id__": 37
     },
-    "lbl_jb_bottom": {
+    "labJbBottom": {
       "__id__": 35
     },
-    "kunsJsonAsset": {
+    "mJsoKuns": {
       "__uuid__": "43ac43cb-24c6-4d74-b7fb-209ea2fd48c4"
     },
     "_id": "96ShKn5wRNlr18dPpJjhlK"

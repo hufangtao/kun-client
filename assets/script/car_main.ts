@@ -6,91 +6,81 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class car_main extends cc.Component {
 
+    @property(cc.Prefab)
+    private pfbCar: cc.Prefab = null;
 
-    private runwaystart: cc.Vec2[] = [];
-    private cj_time: number = 0;
-    private running: number = 0;
-    private park: any[] = null;
-    private js_time: number = 0;
-    private b_jb_act_isend: boolean = true; // 金币动画结束标志
+    @property(cc.Node)
+    private nodHuiShouNode: cc.Node = null;
+
+    @property(cc.Prefab)
+    private pfbMallItem: cc.Prefab = null;
+
+    @property(cc.Prefab)
+    private pfbJB: cc.Prefab = null;
+
+    @property(cc.Node)
+    private nodJb: cc.Node = null;
+
+    @property(cc.Prefab)
+    private pfbJbAdd: cc.Prefab = null;
+
+    @property(cc.Label)
+    private labJbMeiQuan: cc.Label = null;
+
+    @property(cc.Label)
+    private labJbCount: cc.Label = null;
+
+    @property(cc.Label)
+    private labJbCount2: cc.Label = null;
+
+    @property(cc.Label)
+    private labJbMaiche: cc.Label = null;
+
+    @property(cc.Label)
+    private labRunning: cc.Label = null;
+
+    @property(cc.Label)
+    private labZs: cc.Label = null;
+
+    @property(cc.Label)
+    private labCjTime: cc.Label = null;
+
+    @property(cc.SpriteFrame)
+    private sprQiPao1: cc.SpriteFrame = null;
+
+    @property(cc.SpriteFrame)
+    private sprQiPao2: cc.SpriteFrame = null;
+
+    @property(cc.Node)
+    private nodLyQiPao: cc.Node = null;
+
+    @property(cc.Label)
+    private labJiaSu: cc.Label = null;
+
+    @property(cc.Node)
+    private parJiaSu: cc.Node = null;
+
+    @property(cc.Label) 
+    private labJbTop: cc.Label = null;
+
+    @property(cc.Label) 
+    private labJbBottom: cc.Label = null;
+
+    @property(cc.JsonAsset) 
+    private mJsoKuns: cc.JsonAsset = null;
+
+    private mArrRunwayStart: cc.Vec2[] = []; // 跑道起点
+    private mNumCjTime: number = 0;
+    private mNumRunning: number = 0;
+    private mArrPark: any[] = null;
+    private mNumJsTime: number = 0;
+    private mIsAnimEnd: boolean = true; // 金币动画结束标志
     private mLastId = 0;
-
-    @property(cc.Prefab)
-    private car_prefab: cc.Prefab = null;
-
-    @property(cc.Node)
-    private parkNode: cc.Node = null;
-
-    @property(cc.Node)
-    private huishouNode: cc.Node = null;
-
-    @property(cc.JsonAsset)
-    private json_sc_config: cc.JsonAsset = null;
-
-    @property(cc.Prefab)
-    private prefabMallItem: cc.Prefab = null;
-
-    @property(cc.Prefab)
-    private prefabJB: cc.Prefab = null;
-
-    @property(cc.Node)
-    private jb_node: cc.Node = null;
-
-    @property(cc.Prefab)
-    private prefabJB_lbl: cc.Prefab = null;
-
-    @property(cc.Label)
-    private lbl_jb_meiquan: cc.Label = null;
-
-    @property(cc.Label)
-    private lbl_jb_count: cc.Label = null;
-
-    @property(cc.Label)
-    private lbl_jb_count2: cc.Label = null;
-
-    @property(cc.Label)
-    private lbl_jb_maiche: cc.Label = null;
-
-    @property(cc.Label)
-    private lbl_running: cc.Label = null;
-
-    @property(cc.Prefab)
-    private prefab_sc: cc.Prefab = null;
-
-    @property(cc.Label)
-    private lbl_zs: cc.Label = null;
-
-    @property(cc.Label)
-    private cj_time_lbl: cc.Label = null;
-
-    @property(cc.SpriteFrame)
-    private sp_qipao_1: cc.SpriteFrame = null;
-
-    @property(cc.SpriteFrame)
-    private sp_qipao_2: cc.SpriteFrame = null;
-
-    @property(cc.Node)
-    private ly_qipao: cc.Node = null;
-
-    @property(cc.Label)
-    private lbl_jiasu: cc.Label = null;
-
-    @property(cc.Node)
-    private jiasu_lizi: cc.Node = null;
-
-    @property(cc.Label)
-    private lbl_jb_top: cc.Label = null;
-
-    @property(cc.Label)
-    private lbl_jb_bottom: cc.Label = null;
-
-    @property(cc.JsonAsset)
-    private kunsJsonAsset: cc.JsonAsset = null;
-
-    private kunsConfig: any = null;
+    private mNodParkNode: cc.Node = null;
+    private mConKunsConfig: any = null;
 
     public start() {
-        this.kunsConfig = this.kunsJsonAsset.json;
+        this.mConKunsConfig = this.mJsoKuns.json;
         // 加速
         Define.jiasu = 1;
         // 计算出每一等级的速度, 金币收益
@@ -102,8 +92,8 @@ export default class car_main extends cc.Component {
         // console.log(Define.coin_s);
         // console.log(Define.coin);
         Define.sceneNode = this.node;
-        this.runwaystart.push(cc.v2(-282, -199));
-        this.runwaystart.push(cc.v2(-282, 256));
+        this.mArrRunwayStart.push(cc.v2(-282, -199));
+        this.mArrRunwayStart.push(cc.v2(-282, 256));
         this.init();
         this.initEventHandlers();
 
@@ -111,7 +101,7 @@ export default class car_main extends cc.Component {
         this.JB_ShowCount();
         this.JB_ShowMeiQuan();
         this.ZS_ShowCount();
-        this.lbl_jb_maiche.string = global.getNumString(Define.userData.buy_coin[0]);
+        this.labJbMaiche.string = global.getNumString(Define.userData.buy_coin[0]);
 
         const self = this;
         cc.game.on(cc.game.EVENT_HIDE, function() {
@@ -147,17 +137,17 @@ export default class car_main extends cc.Component {
     }
 
     public init() {
-        this.parkNode = cc.find("Canvas/park");
-        if (!this.parkNode) {
+        this.mNodParkNode = cc.find("Canvas/park");
+        if (!this.mNodParkNode) {
             console.log("未找到节点：park");
             return;
         }
-        this.park = [];
+        this.mArrPark = [];
         const a_x = [-156, 3, 156];
         const a_y = [280, 176, 83, -22, -120, -220];
         for (let y = 0; y < 6; y++) {
             for (let x = 0; x < 3; x++) {
-                this.park.push({
+                this.mArrPark.push({
                     car: null,
                     pos: cc.v2(a_x[x], a_y[y]),
                 });
@@ -167,27 +157,27 @@ export default class car_main extends cc.Component {
         Define.userData.mqcoin = 0;
         for (let i = 0; i < Define.userData.park.length; i++) {
             const c = Define.userData.park[i];
-            const n = cc.instantiate(this.car_prefab);
-            n.setParent(this.parkNode);
-            this.park[c.index].car = n.getComponent("car");
-            this.park[c.index].car.init(c.index, this.park[c.index].pos, c.carid);
+            const n = cc.instantiate(this.pfbCar);
+            n.setParent(this.mNodParkNode);
+            this.mArrPark[c.index].car = n.getComponent("car");
+            this.mArrPark[c.index].car.init(c.index, this.mArrPark[c.index].pos, c.carid);
             if (c.b_isRunning) {
-                this.park[c.index].car.copy();
-                /*this.park[c.index].car.wayid = c.wayid;
+                this.mArrPark[c.index].car.copy();
+                /*this.mArrPark[c.index].car.wayid = c.wayid;
                 this.angle = c.angle;
                 n.rotation = c.r;
                 n.setPosition(c.pos);
                 */
-                this.park[c.index].car.wayid = global.randomNum(0, 1) === 1 ? 2 : 0;
-                if (this.park[c.index].car.wayid === 0) {
+                this.mArrPark[c.index].car.wayid = global.randomNum(0, 1) === 1 ? 2 : 0;
+                if (this.mArrPark[c.index].car.wayid === 0) {
                     n.setPosition(cc.v2(-282, global.randomNum(-144, 213)));
                 } else {
                     n.setPosition(cc.v2(282, global.randomNum(-144, 213)));
                     n.rotation = 180;
                 }
 
-                this.park[c.index].car.run();
-                Define.userData.mqcoin += this.park[c.index].car.coin_quan;
+                this.mArrPark[c.index].car.run();
+                Define.userData.mqcoin += this.mArrPark[c.index].car.coin_quan;
                 this.showRunningCount(1);
                 console.log("+1");
             }
@@ -206,9 +196,9 @@ export default class car_main extends cc.Component {
         global.saveUserData("coin", Define.userData.coin);
         Define.userData.lixiantime = Date.now();
         global.saveUserData("lixiantime", Define.userData.lixiantime);
-        Define.userData.jiasu_endtime = Date.now() + self.js_time * 1000;
+        Define.userData.jiasu_endtime = Date.now() + self.mNumJsTime * 1000;
         global.saveUserData("jiasu_endtime", Define.userData.jiasu_endtime);
-        Define.userData.ad_time = Date.now() + self.cj_time * 1000;
+        Define.userData.ad_time = Date.now() + self.mNumCjTime * 1000;
         global.saveUserData("ad_time", Define.userData.ad_time);
         global.saveUserData("level", Define.userData.level);
         global.saveUserData("buy_coin", JSON.stringify(Define.userData.buy_coin));
@@ -224,10 +214,10 @@ export default class car_main extends cc.Component {
 
         if (jiasutime === 0) {
             Define.jiasu = 1;
-            this.jiasu_lizi.active = false;
+            this.parJiaSu.active = false;
         } else {
             Define.jiasu = 2;
-            this.jiasu_lizi.active = true;
+            this.parJiaSu.active = true;
         }
         this.JB_ShowMeiQuan();
     }
@@ -253,14 +243,14 @@ export default class car_main extends cc.Component {
         Define.userData.coin += num;
         // 还原加速状态及时间
         if (jst > 2) {
-            this.js_time = jst;
+            this.mNumJsTime = jst;
 
             this.scheduleOnce(() => {
                 self.onJiaSu(1);
             }, 1);
         } else {
-            this.lbl_jiasu.string = "";
-            this.js_time = 0;
+            this.labJiaSu.string = "";
+            this.mNumJsTime = 0;
             Define.userData.jiasu_endtime = 0;
             this.scheduleOnce(() => {
                 self.onJiaSu(0);
@@ -268,19 +258,19 @@ export default class car_main extends cc.Component {
 
         }
         // 显示抽奖倒计时
-        this.cj_time = (Define.userData.ad_time - Date.now()) / 1000;
-        if (this.cj_time <= 0) {
-            this.cj_time_lbl.string = "";
+        this.mNumCjTime = (Define.userData.ad_time - Date.now()) / 1000;
+        if (this.mNumCjTime <= 0) {
+            this.labCjTime.string = "";
             Define.userData.ad_time = 0;
         }
     }
 
     public JB_ShowCount() {
-        this.lbl_jb_count2.string = global.getNumString(Define.userData.coin);
-        if (this.b_jb_act_isend) {
-            this.b_jb_act_isend = false;
-            const newstr = this.lbl_jb_count2.string;
-            const oldstr = this.lbl_jb_count.string;
+        this.labJbCount2.string = global.getNumString(Define.userData.coin);
+        if (this.mIsAnimEnd) {
+            this.mIsAnimEnd = false;
+            const newstr = this.labJbCount2.string;
+            const oldstr = this.labJbCount.string;
             let s0 = "";
             let st = "";
             let sb = "";
@@ -302,40 +292,40 @@ export default class car_main extends cc.Component {
                 sb = sb + newstr.substring(n, newstr.length);
             }
             const self = this;
-            this.lbl_jb_count.string = s0;
-            this.lbl_jb_top.string = st;
-            this.lbl_jb_bottom.string = sb;
-            this.lbl_jb_top.node.runAction(cc.moveBy(0.1, cc.v2(0, 32)));
-            this.lbl_jb_bottom.node.runAction(cc.sequence(cc.moveBy(0.1, cc.v2(0, 32)), cc.callFunc(() => {
-                self.lbl_jb_top.string = "";
-                self.lbl_jb_bottom.string = "";
-                self.lbl_jb_count.string = newstr;
-                self.lbl_jb_bottom.node.y -= 32;
-                self.lbl_jb_top.node.y -= 32;
-                self.b_jb_act_isend = true;
+            this.labJbCount.string = s0;
+            this.labJbTop.string = st;
+            this.labJbBottom.string = sb;
+            this.labJbTop.node.runAction(cc.moveBy(0.1, cc.v2(0, 32)));
+            this.labJbBottom.node.runAction(cc.sequence(cc.moveBy(0.1, cc.v2(0, 32)), cc.callFunc(() => {
+                self.labJbTop.string = "";
+                self.labJbBottom.string = "";
+                self.labJbCount.string = newstr;
+                self.labJbBottom.node.y -= 32;
+                self.labJbTop.node.y -= 32;
+                self.mIsAnimEnd = true;
             })));
         }
     }
 
     public JB_ShowMeiQuan() {
-        this.lbl_jb_meiquan.string = global.getNumString(Define.userData.mqcoin * Define.jiasu) + "/秒";
-        // this.lbl_jb_meiquan.string = Define.userData.mqcoin * Define.jiasu + "/秒";
+        this.labJbMeiQuan.string = global.getNumString(Define.userData.mqcoin * Define.jiasu) + "/秒";
+        // this.labJbMeiQuan.string = Define.userData.mqcoin * Define.jiasu + "/秒";
     }
 
     public ZS_ShowCount() {
-        this.lbl_zs.string = Define.userData.gem;
+        this.labZs.string = Define.userData.gem;
     }
 
     public showRunningCount(i) {
-        if (this.running >= 10 && i > 0) {
+        if (this.mNumRunning >= 10 && i > 0) {
             return;
         }
-        this.running += i;
-        this.lbl_running.string = this.running + "/10";
+        this.mNumRunning += i;
+        this.labRunning.string = this.mNumRunning + "/10";
         if (i > 0) {
-            this.ly_qipao.children[this.running - 1].getComponent(cc.Sprite).spriteFrame = this.sp_qipao_2;
+            this.nodLyQiPao.children[this.mNumRunning - 1].getComponent(cc.Sprite).spriteFrame = this.sprQiPao2;
         } else {
-            this.ly_qipao.children[this.running].getComponent(cc.Sprite).spriteFrame = this.sp_qipao_1;
+            this.nodLyQiPao.children[this.mNumRunning].getComponent(cc.Sprite).spriteFrame = this.sprQiPao1;
         }
     }
 
@@ -343,7 +333,7 @@ export default class car_main extends cc.Component {
 
         // 拖动汽车结束事件
         this.node.on("car_touch_start", (data) => {
-            this.huishouNode.color = cc.color(255, 137, 137);
+            this.nodHuiShouNode.color = cc.color(255, 137, 137);
         }, this);
         this.node.on("car_touch_end", this.onTouchCar, this);
         // 增加金币
@@ -358,16 +348,16 @@ export default class car_main extends cc.Component {
 
     public onAddGold(data) {
         Define.audioMgr.playSFX("addjb");
-        const jb = cc.instantiate(this.prefabJB);
-        const jblbl = cc.instantiate(this.prefabJB_lbl);
+        const jb = cc.instantiate(this.pfbJB);
+        const jblbl = cc.instantiate(this.pfbJbAdd);
         jblbl.getComponent(cc.Label).string = "+" + Define.coin[data];
-        jblbl.setParent(this.jb_node);
+        jblbl.setParent(this.nodJb);
         jblbl.active = true;
         jblbl.setPosition(cc.v2(global.randomNum(-30, 30), 10));
         jblbl.runAction(cc.sequence(cc.spawn(cc.moveBy(1, cc.v2(0, 98)), cc.fadeTo(1.1, 0)), cc.callFunc(() => {
             jblbl.destroy();
         })));
-        jb.setParent(this.jb_node);
+        jb.setParent(this.nodJb);
         jb.active = true;
         Define.userData.coin += Define.coin[data];
         this.JB_ShowCount();
@@ -375,7 +365,7 @@ export default class car_main extends cc.Component {
 
     public onTouchCar(data) {
         const self = this;
-        this.huishouNode.color = cc.color(255, 255, 255);
+        this.nodHuiShouNode.color = cc.color(255, 255, 255);
         // 判断是否回收
         const hspos = cc.v2(253, -543);
 
@@ -384,7 +374,7 @@ export default class car_main extends cc.Component {
             data.car.huishou();
             Define.userData.coin += 200;  // 回收价格
             this.JB_ShowCount();
-            this.park[data.car.index].car = null;
+            this.mArrPark[data.car.index].car = null;
             return;
         }
 
@@ -393,18 +383,18 @@ export default class car_main extends cc.Component {
         // cc.Intersection.pointInPolygon 判断一个点是否在一个多边形中
         let isInPark = false;
         for (let i = 0; i < 18; i++) {
-            const p = this.park[i].pos;
+            const p = this.mArrPark[i].pos;
             if (i !== data.car.index && cc.Intersection.pointInPolygon(data.pos, [p.add(Define.park_py[0]), p.add(Define.park_py[1]), p.add(Define.park_py[2]), p.add(Define.park_py[3])])) {
                 isInPark = true;
-                if (this.park[i].car) {
+                if (this.mArrPark[i].car) {
                     // 有车了, 判断该车位车与拖动的车是否相同
-                    if (this.park[i].car.carid === data.car.carid && !this.park[i].car.b_isRunning) {
+                    if (this.mArrPark[i].car.carid === data.car.carid && !this.mArrPark[i].car.b_isRunning) {
                         // 合并汽车, 拖动的车执行从两边向中间合拢的动画
 
-                        this.park[data.car.index].car = null;
+                        this.mArrPark[data.car.index].car = null;
                         data.car.merge();
                         // 目标车放大淡出, 并升级
-                        this.park[i].car.upgrade();
+                        this.mArrPark[i].car.upgrade();
                         // 是否解锁汽车
                         if (data.car.carid === Define.userData.level) {
                             Define.userData.level = data.car.carid + 1;
@@ -423,10 +413,10 @@ export default class car_main extends cc.Component {
                     return;
                 } else {
                     // 车位无车, 直接放置
-                    this.park[data.car.index].car = null;
+                    this.mArrPark[data.car.index].car = null;
                     data.car.index = i;
-                    data.car.parkpos = this.park[i].pos;
-                    this.park[i].car = data.car;
+                    data.car.parkpos = this.mArrPark[i].pos;
+                    this.mArrPark[i].car = data.car;
                 }
                 break;
             }
@@ -435,9 +425,9 @@ export default class car_main extends cc.Component {
             data.car.replace();
         } else {
             // 如果没在车位上面, 则判断是否是跑道起点
-            if (this.running < 10 && cc.Intersection.pointLineDistance(data.pos, this.runwaystart[0], this.runwaystart[1], true) <= 30) {
+            if (this.mNumRunning < 10 && cc.Intersection.pointLineDistance(data.pos, this.mArrRunwayStart[0], this.mArrRunwayStart[1], true) <= 30) {
                 // 开跑    				
-                const p = global.getFootOfPerpendicular(data.pos, this.runwaystart[0], this.runwaystart[1]);
+                const p = global.getFootOfPerpendicular(data.pos, this.mArrRunwayStart[0], this.mArrRunwayStart[1]);
                 data.car.node.setPosition(p);
                 data.car.run();
                 // 修改每圈金币数
@@ -462,14 +452,14 @@ export default class car_main extends cc.Component {
         }
         for (let i = 0; i < 18; i++) {
             Define.audioMgr.playSFX("move");
-            if (!this.park[i].car) {
+            if (!this.mArrPark[i].car) {
                 Define.userData.coin -= coin;
-                const n = cc.instantiate(this.car_prefab);
-                n.setParent(this.parkNode);
-                this.park[i].car = n.getComponent("car");
-                this.park[i].car.init(i, this.park[i].pos, id);
+                const n = cc.instantiate(this.pfbCar);
+                n.setParent(this.mNodParkNode);
+                this.mArrPark[i].car = n.getComponent("car");
+                this.mArrPark[i].car.init(i, this.mArrPark[i].pos, id);
                 Define.userData.buy_coin[id] = Math.floor(Define.userData.buy_coin[id] * 1.07);
-                this.lbl_jb_maiche.string = global.getNumString(Define.userData.buy_coin[id]);
+                this.labJbMaiche.string = global.getNumString(Define.userData.buy_coin[id]);
                 this.mLastId = id;
                 this.JB_ShowCount();
                 return;
@@ -482,7 +472,7 @@ export default class car_main extends cc.Component {
     public onOpenDialog(event, data) {
         if (data === "maiche") {
             this.initMallItem();
-        } else if (data === "choujiang" && this.cj_time > 0) {
+        } else if (data === "choujiang" && this.mNumCjTime > 0) {
             return;
         }
         const node = cc.find("Canvas/panel/" + data);
@@ -507,8 +497,8 @@ export default class car_main extends cc.Component {
 
         const zslevel = JSON.parse('{"7":20, "13":60, "16":100, "19":150, "22":200, "25":250, "28":300, "31":350, "33":400, "35":500}');
 
-        for (let i = 0; i < this.kunsConfig.length; i++) {
-            const n = cc.instantiate(this.prefabMallItem);
+        for (let i = 0; i < this.mConKunsConfig.length; i++) {
+            const n = cc.instantiate(this.pfbMallItem);
             n.getChildByName("sp_icon").getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + (i + 1) + ".png", cc.SpriteFrame);
 
             n.active = true;
@@ -523,7 +513,7 @@ export default class car_main extends cc.Component {
             if (i === 0 || i + 4 <= Define.userData.level) {
                 // 已解锁
                 let b1 = null;
-                let itemcoin = this.kunsConfig[i].coin;
+                let itemcoin = this.mConKunsConfig[i].coin;
                 const iszs = zslevel.hasOwnProperty(i + 1);
 
                 if (Define.userData.buy_coin.length <= i) {
@@ -573,7 +563,7 @@ export default class car_main extends cc.Component {
                 // 未解锁	    	
                 const lock = n.getChildByName("lockbut");
                 lock.active = true;
-                if (i < this.kunsConfig.length - 4) {
+                if (i < this.mConKunsConfig.length - 4) {
                     lock.getChildByName("icon").getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + (i + 5) + ".png", cc.SpriteFrame);
                     lock.getChildByName("level").getComponent(cc.Label).string = "" + (i + 5);
                 } else {
@@ -594,21 +584,21 @@ export default class car_main extends cc.Component {
 
 
     public onChouJiang(event, id) {
-        if (this.cj_time > 0) {
+        if (this.mNumCjTime > 0) {
             global.showTip("不要心急, 还在冷却中哦...");
             return;
         }
         // 随机一个奖励
         if (id === 2) {
             global.showTip("获得加速效果.");
-            this.js_time = 150;
+            this.mNumJsTime = 150;
             this.onJiaSu(1);
         } else {
             global.showTip("获得50钻石");
             Define.userData.gem += 50;
             this.ZS_ShowCount();
         }
-        this.cj_time = 180;
+        this.mNumCjTime = 180;
         if (global.randomNum(1, 2) !== id) {
             event.target.active = false;
             event.target.parent.getChildByName("sp" + (3 - id)).active = true;
@@ -619,15 +609,15 @@ export default class car_main extends cc.Component {
     public getParkObj() {
         const park = [];
         for (let i = 0; i < 18; i++) {
-            if (!this.park[i].car) { continue; }
+            if (!this.mArrPark[i].car) { continue; }
             park.push({
-                index: this.park[i].car.index,
-                carid: this.park[i].car.carid,
-                b_isRunning: this.park[i].car.b_isRunning,
-                wayid: this.park[i].car.wayid,
-                pos: this.park[i].car.node.getPosition(),
-                r: this.park[i].car.node.rotation,
-                angle: this.park[i].car.angle,
+                index: this.mArrPark[i].car.index,
+                carid: this.mArrPark[i].car.carid,
+                b_isRunning: this.mArrPark[i].car.b_isRunning,
+                wayid: this.mArrPark[i].car.wayid,
+                pos: this.mArrPark[i].car.node.getPosition(),
+                r: this.mArrPark[i].car.node.rotation,
+                angle: this.mArrPark[i].car.angle,
             });
         }
         // console.log(park);
@@ -643,21 +633,21 @@ export default class car_main extends cc.Component {
 
     // 显示时间(加速时间/抽奖时间)
     public showTime(dt) {
-        if (this.js_time >= 0) {
-            this.lbl_jiasu.string = global.formatTime(this.js_time.toFixed(0));
-            this.js_time -= dt;
-            if (this.js_time <= 0) {
-                this.lbl_jiasu.string = "";
-                this.js_time = 0;
+        if (this.mNumJsTime >= 0) {
+            this.labJiaSu.string = global.formatTime(this.mNumJsTime.toFixed(0));
+            this.mNumJsTime -= dt;
+            if (this.mNumJsTime <= 0) {
+                this.labJiaSu.string = "";
+                this.mNumJsTime = 0;
                 this.onJiaSu(0);
             }
         }
-        if (this.cj_time >= 0) {
-            this.cj_time_lbl.string = global.formatTime(this.cj_time.toFixed(0));
-            this.cj_time -= dt;
-            if (this.cj_time <= 0) {
-                this.cj_time_lbl.string = "";
-                this.cj_time = 0;
+        if (this.mNumCjTime >= 0) {
+            this.labCjTime.string = global.formatTime(this.mNumCjTime.toFixed(0));
+            this.mNumCjTime -= dt;
+            if (this.mNumCjTime <= 0) {
+                this.labCjTime.string = "";
+                this.mNumCjTime = 0;
             }
         }
     }
@@ -665,7 +655,7 @@ export default class car_main extends cc.Component {
     // 点击起跑区
     public onClickQiPao() {
         for (let i = 0; i < 18; i++) {
-            if (this.park[i].car) { this.park[i].car.onJiaSu(); }
+            if (this.mArrPark[i].car) { this.mArrPark[i].car.onJiaSu(); }
         }
     }
 
@@ -681,7 +671,7 @@ export default class car_main extends cc.Component {
             //加速
             if (!Define.userData.jiasu_endtime)  Define.userData.jiasu_endtime = Date.now() + time[id]*60000;
             else Define.userData.jiasu_endtime += time[id]*60000;
-            this.js_time = (Define.userData.jiasu_endtime-Date.now())/1000;
+            this.mNumJsTime = (Define.userData.jiasu_endtime-Date.now())/1000;
             Define.audioMgr.playSFX("run");
             this.onJiaSu(1);
         } else {*/
