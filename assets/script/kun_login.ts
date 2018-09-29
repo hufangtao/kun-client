@@ -26,7 +26,7 @@ export default class kun_login extends cc.Component {
 			return; 
 		}
 		// HTTP.sendRequest("/login", {account: this.account.string, pw: this.pw.string}, (ret) => {
-		HTTP.sendRequest("/login", {account: this.account.string}, (ret) => {
+		HTTP.sendRequestGet("/login", {account: this.account.string}, (ret) => {
 			if (ret.errcode === 0) {
 				Define.userData = ret.data;
 				if (Define.userData.park !== null && Define.userData.park !== "") { 
@@ -53,7 +53,7 @@ export default class kun_login extends cc.Component {
 		if (this.account.string === "" ||  "" === this.pw.string) {
 			return; 
 		}
-		HTTP.sendRequest("/regist", {account: this.account.string, pw: this.pw.string}, (ret) => {
+		HTTP.sendRequestGet("/regist", {account: this.account.string, pw: this.pw.string}, (ret) => {
 			if (ret.errcode === 0) {
 				console.log("注册成功");
 				global.showTip("注册成功,请登陆.");

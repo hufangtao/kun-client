@@ -114,7 +114,7 @@ export default class global extends cc.Component {
             key: k, 
             value: v,
         };
-        HTTP.sendRequest("/setinfo", data, function(ret) {
+        HTTP.sendRequestGet("/setinfo", data, function(ret) {
             if (ret.errcode === 102 || ret.errcode === 103) {
                 global.showTip("已断开连接!", 5);
                 Define.online = false;
