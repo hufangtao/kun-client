@@ -589,7 +589,7 @@ export default class car_main extends cc.Component {
             return;
         }
         // 随机一个奖励
-        if (id === 2) {
+        if (parseInt(id, 0) === 2) {
             global.showTip("获得加速效果.");
             this.mNumJsTime = 150;
             this.onJiaSu(1);
