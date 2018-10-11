@@ -210,7 +210,7 @@ export default class car_main extends cc.Component {
         sendData.account        = Define.userData.account;
         sendData.id             = Define.userData.id;
         sendData.token          = Define.userData.serverAccSign;
-        sendData.park           = 5;
+        sendData.park           = s;
         sendData.gem            = Define.userData.gem;
         sendData.coin           = Define.userData.coin;
         sendData.lixiantime     = Define.userData.lixiantime;

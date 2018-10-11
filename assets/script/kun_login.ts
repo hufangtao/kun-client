@@ -93,13 +93,13 @@ export default class kun_login extends cc.Component {
 
 				Define.userData = ret.data;
 				if (Define.userData.park !== null && Define.userData.park !== "") { 
-					Define.userData.park = ret.data.park; 
+					Define.userData.park = JSON.parse(ret.data.park); 
 				} else { 
 					Define.userData.park = []; 
 				}
 				
 				if (Define.userData.buy_coin !== null && Define.userData.buy_coin !== "") {
-					Define.userData.buy_coin = Define.userData.buy_coin; 
+					Define.userData.buy_coin = JSON.parse(Define.userData.buy_coin); 
 				} else { 
 					Define.userData.buy_coin = [100]; 
 				}
