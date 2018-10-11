@@ -54,6 +54,7 @@
     callback(null, item);
   }
 
+  //插入新的pipeline 可以综合处理不同平台的资源加载
   var resRemoteUrl = window.resRemoteUrl = new ResRemoteUrl();
   var prevPipe = cc.loader.md5Pipe || cc.loader.assetLoader;
   cc.loader.insertPipeAfter(prevPipe, resRemoteUrl);

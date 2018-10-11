@@ -31,6 +31,6 @@ export default class Define {
         cc.v2(10, 50), 
         cc.v2(86, 5), 
         cc.v2(-10, -50), 
-        cc.v2(-86, -5)]
-    ;
+        cc.v2(-86, -5),
+    ];
 }

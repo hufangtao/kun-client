@@ -58,7 +58,7 @@ window.boot = function () {
         //     }
         // };
         splash.style.display = 'block';
-        progressBar.style.width = '100%';
+        progressBar.style.width = '80%';
 
         cc.director.once(cc.Director.EVENT_AFTER_SCENE_LAUNCH, function () {
             splash.style.display = 'none';
@@ -152,6 +152,9 @@ window.boot = function () {
         jsList = jsList.concat(['src/ANYS/jsb_ANYS.js', 'src/ANYS/jsb_ANYS_constants.js']);
     }
 
+    // xlchen 2018-10-09 不让引擎去加载，自己来控制加载文件
+    jsList = [];
+
     var option = {
         id: 'GameCanvas',
         scenes: settings.scenes,
@@ -194,4 +197,83 @@ else if (window.jsb) {
     require('src/cocos2d-jsb.js');
     require('jsb-adapter/engine/index.js');
     window.boot();
+}
+
+if (window.document) {
+      // open web debugger console
+      if (typeof VConsole !== 'undefined') {
+        window.vConsole = new VConsole();
+      }
+
+      var splash = document.getElementById('splash');
+      splash.style.display = 'block';
+
+    //   var cocos2d = document.createElement('script');
+    //   cocos2d.async = true;
+    //   cocos2d.src = window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.js';
+
+    //   var engineLoaded = function () {
+    //     document.body.removeChild(cocos2d);
+    //     cocos2d.removeEventListener('load', engineLoaded, false);
+    //     window.boot();
+    //   };
+    //   cocos2d.addEventListener('load', engineLoaded, false);
+    //   document.body.appendChild(cocos2d);
+
+    //dynamic-load-all-script-begin
+    var loadScript = function (list, callback) {
+      var loaded = 0;
+      var loadNext = function () {
+        loadSingleScript(list[loaded], function () {
+          loaded++;
+          if (loaded >= list.length) {
+            callback();
+          } else {
+            loadNext();
+          }
+        })
+      };
+      loadNext();
+    };
+    //dynamic-load-all-script-end
+
+    var loadSingleScript = function (src, callback) {
+      var s = document.createElement('script');
+      s.async = false;
+      s.src = src;
+
+      var singleCallback = (function _single() {
+        s.parentNode.removeChild(s);
+        s.removeEventListener('load', singleCallback, false);
+        callback();
+      });
+      s.addEventListener('load', singleCallback, false);
+      document.body.appendChild(s);
+    };
+
+    //dynamic-load-animal-script-begin
+    var jsList = [];
+    var cocos2dJs = window._CCSettings.debug ? './cocos2d-js.js' : './cocos2d-js-min.js';
+    var webdownloaderdJS = "./src/assets/resources/jsLib/res-remote-url.js";
+    var base64JS = "./src/assets/resources/jsLib/base64.min.js";
+    var zipJS = "./src/assets/resources/jsLib/jszip/jszip.min.js";
+    var partnerJs = "./src/assets/partner/PartnerBase.js";
+    var dygameJs = "./src/assets/resources/jsLib/dy-game.js";
+    var projectJs = window._CCSettings.debug ? './src/project.dev.js' : './src/project.js';
+    jsList.push(cocos2dJs);
+    jsList.push(webdownloaderdJS);
+    jsList.push(base64JS);
+    jsList.push(zipJS);
+    jsList.push(partnerJs);
+    jsList.push(dygameJs);
+    jsList.push(projectJs);
+    //dynamic-load-animal-script-end
+
+    loadScript(jsList, function() {
+    //   //插入新的pipeline 可以综合处理不同平台的资源加载
+    //   var prevPipe = cc.loader.md5Pipe || cc.loader.assetLoader;
+    //   resRemoteUrl.REMOTE_SERVER_ROOT = ANIMAL_RES_REMOTE_SERVER_ROOT;
+    //   cc.loader.insertPipeAfter(prevPipe, resRemoteUrl);
+      window.boot();
+    });
 }

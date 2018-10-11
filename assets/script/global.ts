@@ -106,7 +106,9 @@ export default class global extends cc.Component {
     }
 
     public static saveUserData(k, v, callback = null) {
-        if (!Define.online) { return; }
+        if (!Define.online) { 
+            return; 
+        }
         const data = {
             account: Define.userData.account, 
             id: Define.userData.id, 
@@ -114,7 +116,7 @@ export default class global extends cc.Component {
             key: k, 
             value: v,
         };
-        HTTP.sendRequestGet("/setinfo", data, function(ret) {
+        HTTP.sendRequestPost("/setinfo", data, function(ret) {
             if (ret.errcode === 102 || ret.errcode === 103) {
                 global.showTip("已断开连接!", 5);
                 Define.online = false;

@@ -119,20 +119,20 @@ export default class car_main extends cc.Component {
 
         this.onXinShou();
         // 每5分钟保存一次数据
-        this.schedule(this.savedata, 60);
+        this.schedule(this.savedata, 10);
 
         return;
 
-        // 获取世界排行榜
-        const data = {
-            openid: Define.userData.openid,
-            id: Define.userData.id,
-            t: Define.userData.t,
-            token: Define.userData.token,
-        };
-        HTTP.sendRequestGet("/worldrank", data, function(ret) {
-            // self.initworldrank(ret.data);   
-        }, null);
+        // // 获取世界排行榜
+        // const data = {
+        //     openid: Define.userData.openid,
+        //     id: Define.userData.id,
+        //     t: Define.userData.t,
+        //     token: Define.userData.token,
+        // };
+        // HTTP.sendRequestGet("/worldrank", data, function(ret) {
+        //     // self.initworldrank(ret.data);   
+        // }, null);
 
     }
 
@@ -191,17 +191,43 @@ export default class car_main extends cc.Component {
         const self = this;
         const s = self.getParkObj();
         Define.userData.park = JSON.parse(s);
-        global.saveUserData("park", s);
-        global.saveUserData("gem", Define.userData.gem);
-        global.saveUserData("coin", Define.userData.coin);
+        // global.saveUserData("park", s);
+        // global.saveUserData("gem", Define.userData.gem);
+        // global.saveUserData("coin", Define.userData.coin);
         Define.userData.lixiantime = Date.now();
-        global.saveUserData("lixiantime", Define.userData.lixiantime);
+        // global.saveUserData("lixiantime", Define.userData.lixiantime);
         Define.userData.jiasu_endtime = Date.now() + self.mNumJsTime * 1000;
-        global.saveUserData("jiasu_endtime", Define.userData.jiasu_endtime);
+        // global.saveUserData("jiasu_endtime", Define.userData.jiasu_endtime);
         Define.userData.ad_time = Date.now() + self.mNumCjTime * 1000;
-        global.saveUserData("ad_time", Define.userData.ad_time);
-        global.saveUserData("level", Define.userData.level);
-        global.saveUserData("buy_coin", JSON.stringify(Define.userData.buy_coin));
+        // global.saveUserData("ad_time", Define.userData.ad_time);
+        // global.saveUserData("level", Define.userData.level);
+        // global.saveUserData("buy_coin", JSON.stringify(Define.userData.buy_coin));
+
+        if (!Define.online) { 
+            return; 
+        }
+        const sendData: any = {};
+        sendData.account        = Define.userData.account;
+        sendData.id             = Define.userData.id;
+        sendData.token          = Define.userData.serverAccSign;
+        sendData.park           = 5;
+        sendData.gem            = Define.userData.gem;
+        sendData.coin           = Define.userData.coin;
+        sendData.lixiantime     = Define.userData.lixiantime;
+        sendData.jiasu_endtime  = Define.userData.jiasu_endtime;
+        sendData.ad_time        = Define.userData.ad_time;
+        sendData.level          = Define.userData.level;
+        sendData.buy_coin       = JSON.stringify(Define.userData.buy_coin);
+
+        HTTP.sendRequestPost("/setinfo", sendData, function(ret) {
+            if (ret.errcode === 102 || ret.errcode === 103) {
+                global.showTip("已断开连接!", 5);
+                Define.online = false;
+                this.scheduleOnce(() => {
+                    cc.director.loadScene("car_login");
+                },  5);
+            }
+        }, null);
     }
 
     public onback() {
