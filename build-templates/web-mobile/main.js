@@ -248,6 +248,7 @@ if (window.document) {
         callback();
       });
       s.addEventListener('load', singleCallback, false);
+      console.log("loadSingleScript", src);
       document.body.appendChild(s);
     };
 
@@ -258,6 +259,7 @@ if (window.document) {
     var base64JS = "./src/assets/resources/jsLib/base64.min.js";
     var zipJS = "./src/assets/resources/jsLib/jszip/jszip.min.js";
     var partnerJs = "./src/assets/partner/PartnerBase.js";
+    var partnerQZoneJs = "./Partners/PartnerQZone.js";
     var dygameJs = "./src/assets/resources/jsLib/dy-game.js";
     var projectJs = window._CCSettings.debug ? './src/project.dev.js' : './src/project.js';
     jsList.push(cocos2dJs);
@@ -265,6 +267,7 @@ if (window.document) {
     jsList.push(base64JS);
     jsList.push(zipJS);
     jsList.push(partnerJs);
+    jsList.push(partnerQZoneJs);
     jsList.push(dygameJs);
     jsList.push(projectJs);
     //dynamic-load-animal-script-end

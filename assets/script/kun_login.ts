@@ -23,6 +23,7 @@ export default class kun_login extends cc.Component {
 		cc.director.preloadScene("car_main");
 		Partner.doAccAuthorize((data: Partner.LoginData) => {
 			// 账号登录成功
+			console.log("kun_login::start", data);
 			this.requestLogin(data);
 		}, (howTo: number) => {
 			// 怎么展示ui
@@ -110,6 +111,9 @@ export default class kun_login extends cc.Component {
 			} else {
 				console.log(ret.errmsg);
 				global.showTip(ret.errmsg);
+				if (Partner.getPlatform() !== "Base") {
+					this.showAccInput(2);
+				}
 			}
 		}, null);
 	}

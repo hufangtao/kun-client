@@ -5,7 +5,12 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class car_start extends cc.Component {
+
+    @property(cc.Label)
+    private labQQ: cc.Label = null;
+
     public onLoad() {
+        this.labQQ.string = "小蜜桃 QQ号：2556502015"; 
         cc.director.preloadScene("car_main");
     }
 

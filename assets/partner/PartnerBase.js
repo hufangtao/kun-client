@@ -7,7 +7,7 @@
 	typeof self !== 'undefined' ? self
 		: typeof window !== 'undefined' ? window
 			: typeof global !== 'undefined' ? global
-				: this
+			: this
 ), function (global) {
 
 	var Partner = global.Partner || {};
@@ -18,9 +18,10 @@
 		return obj;
 	}
 
-	Partner.PARTNER_NAME = "通用";
+	Partner.PARTNER_NAME = "Base";
 
 	Partner.extends = function () {
+		console.log("Partner.extends");
 		var obj = {};
 		Object.setPrototypeOf(obj, Partner)
 		obj.super = Partner;
@@ -33,6 +34,7 @@
 
 	// 注册授权的回调
 	Partner.doAccAuthorize = function(didAccAuthorizeCallback, inputAccountCallback, existSaved) {
+		// console.log("Partner doAccAuthorize");
 		Partner.didAccAuthorizeCallback = didAccAuthorizeCallback;
 		Partner.inputAccountCallback	= inputAccountCallback;
 		Partner.initPlatform();
@@ -54,11 +56,9 @@
 	}
 
 	// 不同平台需要 override，做个性化初始工作
-	Partner.initPlatform =function() {
-		Partner.inputAccount(1);
-
-		// 开发阶段
-		
+	Partner.initPlatform = function() {
+		// console.log("Partner.initPlatform");
+		Partner.inputAccount(1);	
 	}
 
 	global.Partner = Partner;
