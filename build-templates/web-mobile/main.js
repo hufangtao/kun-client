@@ -267,7 +267,7 @@ if (window.document) {
     jsList.push(base64JS);
     jsList.push(zipJS);
     jsList.push(partnerJs);
-    jsList.push(partnerQZoneJs);
+    //jsList.push(partnerQZoneJs);
     jsList.push(dygameJs);
     jsList.push(projectJs);
     //dynamic-load-animal-script-end
