@@ -11,14 +11,23 @@
 
   ResRemoteUrl.ID = ID;
   ResRemoteUrl.prototype.handle = function (item, callback) {
-    //console.log("#######url:", item);
-    callback(null, null);
-    return;
+    console.log("#######item:", item);
+    //callback(null, null);
+    //return;
+
+    if(!!!Partner.CDN_HOST) {
+      callback(null, null);
+      return;
+    }
 
     if (REGEX.test(item.url)) {
       callback(null, null);
-      return
+      return;
     }
+
+    item.url = Partner.CDN_HOST + "res/" + item.url;
+    callback(null, null);
+    return;
 
     // 如果是jsb
     if (window.jsb) {
