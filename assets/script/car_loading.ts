@@ -33,7 +33,7 @@ export default class car_loading extends cc.Component {
         this.prg.progress = 0;
         this.prg.node.active = false;
         this.startPreloading();
-        cc.director.preloadScene("car_start");
+        // cc.director.preloadScene("car_start");
     }
 
   
