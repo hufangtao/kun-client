@@ -8,6 +8,7 @@ declare module Partner {
   
   // declare const SERVER_GROUP: string;
   declare const PARTNER_NAME: string;
+  declare const SERVER_URL: string;
   // declare const CHANNEL: number;
   // declare const CDN_HOST: string;
   // declare const HEAD_IMG_HOST: string;
