@@ -54,7 +54,7 @@ export default class car_loading extends cc.Component {
 
         }); 
         */
-        cc.loader.loadResDir("/cars", cc.SpriteFrame, (err, assets) => {
+        cc.loader.loadResDir("/cars", cc.SpriteFrame, onProgress, (err, assets) => {
             cc.director.loadScene("car_login");
         }); 
 
