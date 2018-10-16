@@ -1,3 +1,4 @@
+import global from "./global";
 // const URL = "http://132.232.82.31:9000";
 // URL = "http://192.168.20.84:9000";
 
@@ -6,12 +7,16 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class HTTP extends cc.Component {
 
-    public static sessionId: number = 0;
-    public static userId: number = 0;
-    public static master_url: URL = null;
+    // public static sessionId: number = 0;
+    // public static userId: number = 0;
+    // public static master_url: URL = null;
     // public static url: string = "http://192.168.20.173:9000";
     // Partner.SERVER_URL 在发布版本的时候注入
-    public static url: string = Partner.SERVER_URL || "https://fish-gate-dev.dayukeji.com:9001";
+    // public static url: string = "";
+
+    public static get url() {
+        return Partner.SERVER_URL || "https://fish-gate-dev.dayukeji.com:9001";
+    }
 
     public static sendRequestGet(path, data, handler, extraUrl = null) {
         const xhr = cc.loader.getXMLHttpRequest();
@@ -71,18 +76,18 @@ export default class HTTP extends cc.Component {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status < 300)) {
                 try {
-                    // console.log("~~~~~~~~~~~~~~~~~~~~http get data~~~~~~~~~~~~~~~~~~~~", xhr);
+                    global.myLog("~~~~~~~~~~~~~~~~~~~~http get data~~~~~~~~~~~~~~~~~~~~", xhr);
                     const ret = JSON.parse(xhr.responseText);
                     if (handler !== null) {
                         handler(ret);
                     }                     
                 } catch (e) {
-                    console.log("err:" + e);
+                    global.myLog("err:" + e);
                 } finally {
                 }
             }
         };
-        // console.log("~~~~~~~~~~~~~~~~~~~~http send data~~~~~~~~~~~~~~~~~~~~", JSON.stringify(data));
+        global.myLog("~~~~~~~~~~~~~~~~~~~~http send data~~~~~~~~~~~~~~~~~~~~", JSON.stringify(data));
         xhr.send(JSON.stringify(data));
         return xhr;
     }
