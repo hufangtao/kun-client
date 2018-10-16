@@ -60,7 +60,7 @@ export default class car_loading extends cc.Component {
 
         cc.loader.loadResDir("/sounds", cc.AudioClip, (err, assets) => {
             // cc.director.loadScene("car_start");
-            console.log(assets);
+            // console.log(assets);
         }); 
     }
 

@@ -23,7 +23,7 @@ export default class kun_login extends cc.Component {
 		cc.director.preloadScene("car_main");
 		Partner.doAccAuthorize((data: Partner.LoginData) => {
 			// 账号登录成功
-			console.log("kun_login::start", data);
+			// console.log("kun_login::start", data);
 			this.requestLogin(data);
 		}, (howTo: number) => {
 			// 怎么展示ui
@@ -90,7 +90,7 @@ export default class kun_login extends cc.Component {
 		
 		HTTP.sendRequestPost("/login", sendData, (ret) => {
 			if (ret.errcode === 0) {
-				console.log("xxxxxxxxxxxxxxxxxxxxxxxxxx");
+				// console.log("xxxxxxxxxxxxxxxxxxxxxxxxxx");
 
 				Define.userData = ret.data;
 				if (Define.userData.park !== null && Define.userData.park !== "") { 
@@ -109,7 +109,7 @@ export default class kun_login extends cc.Component {
 				cc.director.loadScene("car_start");
 				Define.online = true;
 			} else {
-				console.log(ret.errmsg);
+				// console.log(ret.errmsg);
 				global.showTip(ret.errmsg);
 				if (Partner.getPlatform() !== "Base") {
 					this.showAccInput(2);

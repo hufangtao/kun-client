@@ -45,7 +45,7 @@ export default class global extends cc.Component {
         const A = p2.y - p1.y;
         const B = p1.x - p2.x;
         const C = p2.x * p1.y - p1.x * p2.y;
-        console.log(A, B, C);
+        // console.log(A, B, C);
         const x = (  B * B * point.x - A * B * point.y - A * C  ) / ( A * A + B * B );
         const y = ( -A * B * point.x + A * A * point.y - B * C  ) / ( A * A + B * B );
         return cc.v2(x, y);

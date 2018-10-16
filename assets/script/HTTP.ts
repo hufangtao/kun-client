@@ -70,7 +70,7 @@ export default class HTTP extends cc.Component {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status < 300)) {
                 try {
-                    console.log("~~~~~~~~~~~~~~~~~~~~http get data~~~~~~~~~~~~~~~~~~~~", xhr);
+                    // console.log("~~~~~~~~~~~~~~~~~~~~http get data~~~~~~~~~~~~~~~~~~~~", xhr);
                     const ret = JSON.parse(xhr.responseText);
                     if (handler !== null) {
                         handler(ret);
@@ -81,7 +81,7 @@ export default class HTTP extends cc.Component {
                 }
             }
         };
-        console.log("~~~~~~~~~~~~~~~~~~~~http send data~~~~~~~~~~~~~~~~~~~~", JSON.stringify(data));
+        // console.log("~~~~~~~~~~~~~~~~~~~~http send data~~~~~~~~~~~~~~~~~~~~", JSON.stringify(data));
         xhr.send(JSON.stringify(data));
         return xhr;
     }

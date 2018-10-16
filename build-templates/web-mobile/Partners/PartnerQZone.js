@@ -10,8 +10,8 @@ Partner.initPlatform = function() {
     // 异步方式获取登录态 
     window.getOpenKey(function(d) {
         // alert(JSON.stringify(d));
-        console.log("Qzone 登录态", d);
-        console.log("Qzone 登录数据", window.OPEN_DATA);
+        // console.log("Qzone 登录态", d);
+        // console.log("Qzone 登录数据", window.OPEN_DATA);
 
         if (d && window.OPEN_DATA) {
             var jsonParam = {
@@ -21,7 +21,7 @@ Partner.initPlatform = function() {
             }
             var param = JSON.stringify(jsonParam);
     
-            console.log("PartnerQZone.initPlatform param", jsonParam, param);
+            // console.log("PartnerQZone.initPlatform param", jsonParam, param);
             // 登录参数
             var accData = {};
             accData.openid      = window.OPEN_DATA.openid;

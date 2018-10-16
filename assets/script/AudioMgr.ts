@@ -23,11 +23,11 @@ export default class AudioMgr extends cc.Component {
         }
 
         cc.game.on(cc.game.EVENT_HIDE, () => {
-            console.log("cc.audioEngine.pauseAll");
+            // console.log("cc.audioEngine.pauseAll");
             cc.audioEngine.pauseAll();
         });
         cc.game.on(cc.game.EVENT_SHOW, () => {
-            console.log("cc.audioEngine.resumeAll");
+            // console.log("cc.audioEngine.resumeAll");
             cc.audioEngine.resumeAll();
         });
     }
@@ -43,7 +43,7 @@ export default class AudioMgr extends cc.Component {
     
     public playBGM(url) {
         const audioUrl = this.getUrl(url);
-        console.log(audioUrl);
+        // console.log(audioUrl);
         if (this.bgmAudioID >= 0) {
             cc.audioEngine.stop(this.bgmAudioID);
         }

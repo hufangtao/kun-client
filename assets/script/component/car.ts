@@ -130,7 +130,7 @@ export default class car extends cc.Component {
 
     public run() {
         // 开始运行
-        console.log("run");
+        // console.log("run");
         const pngname = this.carid + 1;
         this.node.getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + pngname + "_.png", cc.SpriteFrame);
         Define.audioMgr.playSFX("run");
