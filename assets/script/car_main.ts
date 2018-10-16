@@ -105,11 +105,11 @@ export default class car_main extends cc.Component {
 
         const self = this;
         cc.game.on(cc.game.EVENT_HIDE, function() {
-            console.log("hide");
+            // console.log("hide");
             self.savedata();
         });
         cc.game.on(cc.game.EVENT_SHOW, function() {
-            console.log("show");
+            // console.log("show");
             self.huanyuan();
 
         });
@@ -179,7 +179,7 @@ export default class car_main extends cc.Component {
                 this.mArrPark[c.index].car.run();
                 Define.userData.mqcoin += this.mArrPark[c.index].car.coin_quan;
                 this.showRunningCount(1);
-                console.log("+1");
+                // console.log("+1");
             }
         }
         this.JB_ShowMeiQuan();
@@ -187,7 +187,7 @@ export default class car_main extends cc.Component {
     }
 
     public savedata() {
-        console.log("savedata");
+        // console.log("savedata");
         const self = this;
         const s = self.getParkObj();
         Define.userData.park = JSON.parse(s);
@@ -396,7 +396,7 @@ export default class car_main extends cc.Component {
         const hspos = cc.v2(253, -543);
 
         if (hspos.fuzzyEquals(data.pos, 60)) {
-            console.log("回收鱼鱼");
+            // console.log("回收鱼鱼");
             data.car.huishou();
             Define.userData.coin += 200;  // 回收价格
             this.JB_ShowCount();
@@ -472,7 +472,7 @@ export default class car_main extends cc.Component {
         }
         coin = coin === null ? Define.userData.buy_coin[id] : coin;
         if (Define.userData.coin < coin) {
-            console.log("金币不足");
+            // console.log("金币不足");
             global.showTip("金币不足", 1);
             return;
         }
