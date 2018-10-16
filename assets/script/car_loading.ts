@@ -22,6 +22,7 @@ export default class car_loading extends cc.Component {
     public start() {    
         // cc.gg = require("global");
         // cc.gg.http = require("HTTP");
+        global.myLog("car_loading 进入初始场景");
         cc.debug.setDisplayStats(false);
         Define.audioMgr = new audio();
         Define.audioMgr.init();
