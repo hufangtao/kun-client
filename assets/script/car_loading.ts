@@ -63,6 +63,9 @@ export default class car_loading extends cc.Component {
         }); 
 
         cc.loader.loadResDir("/sounds", cc.AudioClip, (err, assets) => {
+            if (err) {
+                console.error("car_loading /sounds/... 下载出错");
+            }
             // cc.director.loadScene("car_start");
             // console.log(assets);
         }); 
