@@ -1,5 +1,6 @@
 import Define from "./Define";
 import audio from "./AudioMgr";
+import global from "./global";
 
 const {ccclass, property} = cc._decorator;
 
@@ -55,9 +56,9 @@ export default class car_loading extends cc.Component {
         */
         cc.loader.loadResDir("/cars", cc.SpriteFrame, onProgress, (err, assets) => {
             if (err) {
-                console.error("car_loading /cars/... 下载出错");
+                global.myLog("car_loading /cars/... 下载出错");
             } else {
-                console.log("car_loading /cars/... 下载完成,开始进入登录场景");
+                global.myLog("car_loading /cars/... 下载完成,开始进入登录场景");
                 cc.director.loadScene("car_login");
             }
         }); 
@@ -67,7 +68,7 @@ export default class car_loading extends cc.Component {
                 console.error("car_loading /sounds/... 下载出错");
             }
             // cc.director.loadScene("car_start");
-            // console.log(assets);
+            // global.myLog(assets);
         }); 
     }
 

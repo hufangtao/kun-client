@@ -105,6 +105,14 @@ export default class global extends cc.Component {
         return ret;
     }
 
+    public static myLog(message?: any, ...optionalParams: any[]) {
+        console.log(message, optionalParams);
+      }
+    
+      public static myError(message?: any, ...optionalParams: any[]) {
+        console.error(message, optionalParams);
+      }
+      
     public static saveUserData(k, v, callback = null) {
         if (!Define.online) { 
             return; 

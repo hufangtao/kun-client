@@ -20,6 +20,7 @@ export default class kun_login extends cc.Component {
 
 
 	public start() {
+		global.myLog("kun_login 进入登录场景");
 		cc.director.preloadScene("car_main");
 		Partner.doAccAuthorize((data: Partner.LoginData) => {
 			// 账号登录成功
