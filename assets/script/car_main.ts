@@ -115,7 +115,7 @@ export default class car_main extends cc.Component {
         });
 
         // 随机显示一个看视频的按钮
-        cc.find("Canvas/Buttons/sp" + global.randomNum(1, 2)).active = true;
+        cc.find("Canvas/sp" + global.randomNum(1, 2)).active = true;
 
         this.onXinShou();
         // 每5分钟保存一次数据
