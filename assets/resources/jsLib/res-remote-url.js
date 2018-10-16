@@ -26,6 +26,7 @@
     }
 
     item.url = Partner.CDN_HOST + item.url;
+    item.rawUrl = item.url;
     callback(null, null);
     return;
 
