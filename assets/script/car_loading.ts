@@ -6,8 +6,8 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class car_loading extends cc.Component {
 
-    // @property(cc.Label)
-    // private tipLabel: cc.Label = null;
+    @property(cc.Label)
+    private tipLabel: cc.Label = null;
 
     @property(cc.ProgressBar)
     private prg: cc.ProgressBar = null;
@@ -29,7 +29,7 @@ export default class car_loading extends cc.Component {
 
 
         Define.touchid = -1;
-       // this.tipLabel.string = this._stateStr;
+        this.tipLabel.string = this._stateStr;
         this.prg.progress = 0;
         this.prg.node.active = false;
         this.startPreloading();
@@ -38,15 +38,14 @@ export default class car_loading extends cc.Component {
 
   
     public startPreloading() {
-        // this._stateStr = "正在加载资源，请稍候";
+        this._stateStr = "正在加载资源，请稍候";
         this._isLoading = true;
         const self = this;
         this.prg.node.active = true;
         
         const onProgress = (completedCount, totalCount, item) => {
             self._progress = completedCount / totalCount;
-            // self._stateStr = "资源加载中...";// + completedCount +"/" + totalCount;
-            // console.log(completedCount,totalCount,self._progress);
+            // self._stateStr = "资源加载中..."; // + completedCount +"/" + totalCount;
         };
         /*
         cc.loader.loadRes("cars.json",cc.JsonAsset, ( err, assets) {
@@ -55,7 +54,12 @@ export default class car_loading extends cc.Component {
         }); 
         */
         cc.loader.loadResDir("/cars", cc.SpriteFrame, onProgress, (err, assets) => {
-            cc.director.loadScene("car_login");
+            if (err) {
+                console.error("car_loading /cars/... 下载出错");
+            } else {
+                console.log("car_loading /cars/... 下载完成,开始进入登录场景");
+                cc.director.loadScene("car_login");
+            }
         }); 
 
         cc.loader.loadResDir("/sounds", cc.AudioClip, (err, assets) => {
@@ -68,9 +72,8 @@ export default class car_loading extends cc.Component {
     // called every frame, uncomment this t o activate update callback
     public update(dt) {
         if (this._isLoading) {
-           // this.tipLabel.string += Math.floor(this._progress * 100) + "%";   //显示百分比
-            this.prg.progress = this._progress;
-            
+           this.tipLabel.string = Math.floor(this._progress * 100) + "%";   // 显示百分比
+           this.prg.progress = this._progress;
         }
 
     }
