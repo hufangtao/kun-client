@@ -10,7 +10,7 @@ export default class HTTP extends cc.Component {
     public static userId: number = 0;
     public static master_url: URL = null;
     // public static url: string = "http://192.168.20.173:9000";
-    public static url: string = "https://fish-gate.dayukeji.com:9001";
+    public static url: string = Partner.SERVER_URL || "https://fish-gate.dayukeji.com:9001";
 
     public static sendRequestGet(path, data, handler, extraUrl = null) {
         const xhr = cc.loader.getXMLHttpRequest();
