@@ -110,7 +110,7 @@ export default class global extends cc.Component {
       }
     
       public static myError(message?: any, ...optionalParams: any[]) {
-        console.error(message, optionalParams);
+        // console.error(message, optionalParams);
       }
       
     public static saveUserData(k, v, callback = null) {

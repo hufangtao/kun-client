@@ -1,6 +1,7 @@
 import Define from "./Define";
 import global from "./global";
 import HTTP from "./HTTP";
+import DotAnimation from "./DotAnimation";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -15,13 +16,22 @@ export default class kun_login extends cc.Component {
 	@property(cc.EditBox)
 	private edbAccount: cc.EditBox = null;
 
+	private loadingAnimation: DotAnimation = null;
+
 	// @property(cc.EditBox)
 	// private pw: cc.EditBox = null;
 
 
 	public start() {
 		global.myLog("kun_login 进入登录场景");
+
 		cc.director.preloadScene("car_main");
+
+		const dotAnimation = DotAnimation.NewDotAnimation();
+		dotAnimation.node.setParent(this.node);
+		dotAnimation.node.position.y = -458;
+		this.loadingAnimation = dotAnimation;
+
 		Partner.doAccAuthorize((data: Partner.LoginData) => {
 			// 账号登录成功
 			// console.log("kun_login::start", data);
@@ -31,6 +41,18 @@ export default class kun_login extends cc.Component {
 			this.showAccInput(howTo);
 		}, this.existSavedGameAccount());
 	}
+
+	public hideLoading() {
+		if (this.loadingAnimation) {
+		  this.loadingAnimation.node.active = false;
+		}
+	  }
+	
+	  public showLoading() {
+		if (this.loadingAnimation) {
+		  this.loadingAnimation.node.active = true;
+		}
+	  }
 
 	// 登录按钮
 	public onBtnLogin() {
@@ -48,6 +70,8 @@ export default class kun_login extends cc.Component {
 
 	// 重新登录按钮
 	public onBtnRelogin() {
+		this.showLoading();
+
 		// 调用第三方合作商进行账号授权操作
 		Partner.doAccAuthorize((data: Partner.LoginData) => {
 			// 账号登录成功
@@ -69,8 +93,10 @@ export default class kun_login extends cc.Component {
 		this.nodAccInput.active = false;
 		this.nodRelogin.active = false;
 		} else if (howTo === 1) {
+		this.hideLoading();
 		this.nodAccInput.active = true;
 		} else if (howTo === 2) {
+		this.hideLoading();
 		this.nodRelogin.active = true;
 		}
 	}

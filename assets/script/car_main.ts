@@ -187,7 +187,7 @@ export default class car_main extends cc.Component {
     }
 
     public savedata() {
-        // console.log("savedata");
+        global.myLog("savedata");
         const self = this;
         const s = self.getParkObj();
         Define.userData.park = JSON.parse(s);
