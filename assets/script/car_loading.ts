@@ -1,6 +1,7 @@
 import Define from "./Define";
 import audio from "./AudioMgr";
 import global from "./global";
+import DotAnimation from "./DotAnimation";
 
 const {ccclass, property} = cc._decorator;
 
@@ -35,6 +36,11 @@ export default class car_loading extends cc.Component {
         this.prg.progress = 0;
         this.prg.node.active = false;
         this.startPreloading();
+
+        const dotAnimation = DotAnimation.NewDotAnimation();
+        dotAnimation.node.setParent(this.node);
+        dotAnimation.node.position.y = -458;
+        
         // cc.director.preloadScene("car_start");
     }
 

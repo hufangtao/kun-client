@@ -21,7 +21,7 @@
 	Partner.PARTNER_NAME = "Base";
 
 	Partner.extends = function () {
-		console.log("Partner.extends");
+		// console.log("Partner.extends");
 		var obj = {};
 		Object.setPrototypeOf(obj, Partner)
 		obj.super = Partner;

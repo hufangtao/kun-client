@@ -242,6 +242,27 @@
     </div>
   </div> -->
 
+  <!-- QZone-->
+  <script>
+    console.log("QZone html window.OPEN_DATA", window.OPEN_DATA)
+    mqq.invoke('ui','setOnShareHandler',function(type){
+      mqq.invoke('ui','shareMessage',{
+          title: '自定义的分享标题',
+          desc: '自定义的分享描述',
+          share_type: type,
+          share_url: window.OPEN_DATA.shareurl,
+          image_url: window.OPEN_DATA.appicon,
+          back: true
+      },function(result){
+          if(result && result.retCode ==0){
+              alert('分享成功');
+          }else{
+              alert('分享取消');
+          }
+        });
+    });
+  </script>
+
   <!--global-config-begin-->
   <script>
     var screenWidth = window.document.body.clientWidth;
