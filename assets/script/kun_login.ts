@@ -29,7 +29,7 @@ export default class kun_login extends cc.Component {
 
 		const dotAnimation = DotAnimation.NewDotAnimation();
 		dotAnimation.node.setParent(this.node);
-		dotAnimation.node.position.y = -458;
+		dotAnimation.node.setPosition(0, -500);
 		this.loadingAnimation = dotAnimation;
 
 		Partner.doAccAuthorize((data: Partner.LoginData) => {
@@ -93,7 +93,7 @@ export default class kun_login extends cc.Component {
 		this.nodAccInput.active = false;
 		this.nodRelogin.active = false;
 		} else if (howTo === 1) {
-		this.hideLoading();
+		// this.hideLoading();
 		this.nodAccInput.active = true;
 		} else if (howTo === 2) {
 		this.hideLoading();

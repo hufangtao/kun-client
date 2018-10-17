@@ -39,8 +39,8 @@ export default class car_loading extends cc.Component {
 
         const dotAnimation = DotAnimation.NewDotAnimation();
         dotAnimation.node.setParent(this.node);
-        dotAnimation.node.position.y = -458;
-        
+        dotAnimation.node.setPosition(0, -500);
+
         // cc.director.preloadScene("car_start");
     }
 
@@ -61,18 +61,21 @@ export default class car_loading extends cc.Component {
 
         }); 
         */
-        cc.loader.loadResDir("/cars", cc.SpriteFrame, onProgress, (err, assets) => {
-            if (err) {
-                global.myLog("car_loading /cars/... 下载出错");
-            } else {
-                global.myLog("car_loading /cars/... 下载完成,开始进入登录场景");
-                cc.director.loadScene("car_login");
-            }
-        }); 
+        // cc.loader.loadResDir("/cars", cc.SpriteFrame, onProgress, (err, assets) => {
+        //     if (err) {
+        //         global.myLog("car_loading /cars/... 下载出错");
+        //     } else {
+        //         global.myLog("car_loading /cars/... 下载完成,开始进入登录场景");
+        //         cc.director.loadScene("car_login");
+        //     }
+        // }); 
 
         cc.loader.loadResDir("/sounds", cc.AudioClip, (err, assets) => {
             if (err) {
                 console.error("car_loading /sounds/... 下载出错");
+            } else {
+                global.myLog("car_loading /cars/... 下载完成,开始进入登录场景");
+                cc.director.loadScene("car_login");
             }
             // cc.director.loadScene("car_start");
             // global.myLog(assets);

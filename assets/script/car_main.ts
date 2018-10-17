@@ -69,6 +69,9 @@ export default class car_main extends cc.Component {
     @property(cc.JsonAsset) 
     private mJsoKuns: cc.JsonAsset = null;
 
+    @property(cc.SpriteAtlas)
+    private atlasFish: cc.SpriteAtlas = null;
+
     private mArrRunwayStart: cc.Vec2[] = []; // 跑道起点
     private mNumCjTime: number = 0;
     private mNumRunning: number = 0;
@@ -428,7 +431,8 @@ export default class car_main extends cc.Component {
                             // Define.showTip("解锁新车, 暂时用这个提示", 1);
                             this.scheduleOnce(() => {
                                 const node = cc.find("Canvas/panel/unlockcar/jc");
-                                node.getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + (Define.userData.level + 1) + ".png", cc.SpriteFrame);
+                                // node.getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + (Define.userData.level + 1) + ".png", cc.SpriteFrame);
+                                node.getComponent(cc.Sprite).spriteFrame = this.atlasFish.getSpriteFrame("ui-pack-fish-" + (Define.userData.level + 1));
                                 self.onOpenDialog(null, "unlockcar");
                             }, 0.3);
 
@@ -525,7 +529,8 @@ export default class car_main extends cc.Component {
 
         for (let i = 0; i < this.mConKunsConfig.length; i++) {
             const n = cc.instantiate(this.pfbMallItem);
-            n.getChildByName("sp_icon").getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + (i + 1) + ".png", cc.SpriteFrame);
+            // n.getChildByName("sp_icon").getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + (i + 1) + ".png", cc.SpriteFrame);
+            n.getChildByName("sp_icon").getComponent(cc.Sprite).spriteFrame = this.atlasFish.getSpriteFrame("ui-pack-fish-" + (i + 1));
 
             n.active = true;
             n.setParent(list);
@@ -590,7 +595,8 @@ export default class car_main extends cc.Component {
                 const lock = n.getChildByName("lockbut");
                 lock.active = true;
                 if (i < this.mConKunsConfig.length - 4) {
-                    lock.getChildByName("icon").getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + (i + 5) + ".png", cc.SpriteFrame);
+                    // lock.getChildByName("icon").getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + (i + 5) + ".png", cc.SpriteFrame);
+                    lock.getChildByName("icon").getComponent(cc.Sprite).spriteFrame = this.atlasFish.getSpriteFrame("ui-pack-fish-" + (i + 5));
                     lock.getChildByName("level").getComponent(cc.Label).string = "" + (i + 5);
                 } else {
                     lock.getChildByName("level").getComponent(cc.Label).string = "?";

@@ -84,9 +84,7 @@
     "_enabled": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "06905b51-6eae-4578-a535-102702be3144"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -112,6 +110,9 @@
     "_enabled": true,
     "pb_hecheng": {
       "__uuid__": "0b0c5d67-9eef-4f78-ba13-b3d165f0038a"
+    },
+    "atlasFish": {
+      "__uuid__": "4b45af19-e959-4334-af36-1bfc62aabaf5"
     },
     "_id": ""
   },

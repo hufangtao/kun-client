@@ -8,6 +8,9 @@ export default class car extends cc.Component {
     @property(cc.Prefab)
     private pb_hecheng: cc.Prefab = null;
 
+    @property(cc.SpriteAtlas)
+    private atlasFish: cc.SpriteAtlas = null;
+
     private index: number = 0;
     private carid: number = 0;        
     private car_copy: cc.Node = null;
@@ -48,7 +51,8 @@ export default class car extends cc.Component {
     } 
 
     public setSkin() {
-        this.node.getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + (this.carid + 1) + ".png", cc.SpriteFrame);
+        // this.node.getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + (this.carid + 1) + ".png", cc.SpriteFrame);
+        this.node.getComponent(cc.Sprite).spriteFrame = this.atlasFish.getSpriteFrame("ui-pack-fish-" + (this.carid + 1));
         this.coin_quan = Math.floor(Define.coin[this.carid] / Define.level_times[this.carid]);
         this.speed = 3950 / Define.level_times[this.carid];       
 
@@ -132,7 +136,8 @@ export default class car extends cc.Component {
         // 开始运行
         // console.log("run");
         const pngname = this.carid + 1;
-        this.node.getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + pngname + "_.png", cc.SpriteFrame);
+        // this.node.getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + pngname + "_.png", cc.SpriteFrame);
+        this.node.getComponent(cc.Sprite).spriteFrame = this.atlasFish.getSpriteFrame("ui-pack-fish-" + pngname + "_");
         Define.audioMgr.playSFX("run");
         this.b_isRunning = true;
         this.car_copy.on("touchstart", (event) => {
