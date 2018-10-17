@@ -5,7 +5,7 @@ Partner.PARTNER_NAME = "QZone";
     
 Partner.initPlatform = function() {
     
-    console.log("PartnerQZone.initPlatform");
+    // console.log("PartnerQZone.initPlatform");
 
     // 账号输入框和登录按钮都不显示
     Partner.inputAccount(0);
@@ -13,9 +13,9 @@ Partner.initPlatform = function() {
     // 异步方式获取登录态 
     window.getOpenKey(function(d) {
         // alert(JSON.stringify(d));
-        console.log("Qzone 登录态", d);
+        // console.log("Qzone 登录态", d);
 
-        console.log("Qzone数据", window.OPEN_DATA);
+        // console.log("Qzone数据", window.OPEN_DATA);
 
         if (d && window.OPEN_DATA) {
             var jsonParam = {
@@ -25,7 +25,7 @@ Partner.initPlatform = function() {
             }
             var param = JSON.stringify(jsonParam);
     
-            console.log("Qzone 登录参数", jsonParam, param);
+            // console.log("Qzone 登录参数", jsonParam, param);
             
             // 登录参数
             var accData = {};
@@ -35,7 +35,7 @@ Partner.initPlatform = function() {
             accData.params      = param;
             Partner.didAccAuthorize(accData);
         } else {
-            console.log("Qzone 登录失败");
+            // console.log("Qzone 登录失败");
             Partner.inputAccount(2);
         }
     });

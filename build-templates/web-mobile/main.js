@@ -248,7 +248,7 @@ if (window.document) {
         callback();
       });
       s.addEventListener('load', singleCallback, false);
-      console.log("loadSingleScript", src);
+    //   console.log("loadSingleScript", src);
       document.body.appendChild(s);
     };
 
