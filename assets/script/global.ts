@@ -106,7 +106,7 @@ export default class global extends cc.Component {
     }
 
     public static myLog(message?: any, ...optionalParams: any[]) {
-        // console.log(message, optionalParams);
+        console.log(message, optionalParams);
       }
     
       public static myError(message?: any, ...optionalParams: any[]) {
