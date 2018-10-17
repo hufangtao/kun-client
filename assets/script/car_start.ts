@@ -10,6 +10,7 @@ export default class car_start extends cc.Component {
     private labQQ: cc.Label = null;
 
     public onLoad() {
+        global.myLog("car_start 进入开始场景");
         this.labQQ.string = "客服QQ：2556502015"; 
         cc.director.preloadScene("car_main");
     }

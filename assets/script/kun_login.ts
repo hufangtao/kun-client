@@ -93,7 +93,7 @@ export default class kun_login extends cc.Component {
 		this.nodAccInput.active = false;
 		this.nodRelogin.active = false;
 		} else if (howTo === 1) {
-		// this.hideLoading();
+		this.hideLoading();
 		this.nodAccInput.active = true;
 		} else if (howTo === 2) {
 		this.hideLoading();
