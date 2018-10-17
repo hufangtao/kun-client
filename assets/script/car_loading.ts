@@ -23,7 +23,7 @@ export default class car_loading extends cc.Component {
     public start() {    
         // cc.gg = require("global");
         // cc.gg.http = require("HTTP");
-        global.myLog("car_loading 进入初始场景");
+        console.log("car_loading 进入初始场景");
         cc.debug.setDisplayStats(false);
         Define.audioMgr = new audio();
         Define.audioMgr.init();
@@ -69,7 +69,6 @@ export default class car_loading extends cc.Component {
         //         cc.director.loadScene("car_login");
         //     }
         // }); 
-        
         cc.loader.loadResDir("/sounds", cc.AudioClip, (err, assets) => {
             if (err) {
                 global.myError("car_loading /sounds/... 下载出错");
