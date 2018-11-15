@@ -328,7 +328,8 @@ export default class car_main extends cc.Component {
             this.labJbBottom.node.runAction(cc.sequence(cc.moveBy(0.1, cc.v2(0, 32)), cc.callFunc(() => {
                 self.labJbTop.string = "";
                 self.labJbBottom.string = "";
-                self.labJbCount.string = newstr;
+                // self.labJbCount.string = newstr;
+                self.labJbCount.string = global.getNumString(Number(newstr));
                 self.labJbBottom.node.y -= 32;
                 self.labJbTop.node.y -= 32;
                 self.mIsAnimEnd = true;
@@ -379,7 +380,7 @@ export default class car_main extends cc.Component {
         Define.audioMgr.playSFX("addjb");
         const jb = cc.instantiate(this.pfbJB);
         const jblbl = cc.instantiate(this.pfbJbAdd);
-        jblbl.getComponent(cc.Label).string = "+" + Define.coin[data];
+        jblbl.getComponent(cc.Label).string = "+" + global.getNumString(Define.coin[data]);
         jblbl.setParent(this.nodJb);
         jblbl.active = true;
         jblbl.setPosition(cc.v2(global.randomNum(-30, 30), 10));
@@ -419,6 +420,12 @@ export default class car_main extends cc.Component {
                     // 有车了, 判断该车位车与拖动的车是否相同
                     if (this.mArrPark[i].car.carid === data.car.carid && !this.mArrPark[i].car.b_isRunning) {
                         // 合并汽车, 拖动的车执行从两边向中间合拢的动画
+
+                        if (data.car.carid >= Define.cardIdMax) {
+                            global.showTip("最高一级不能合成");
+                            data.car.replace();
+                            return;    
+                        }
 
                         this.mArrPark[data.car.index].car = null;
                         data.car.merge();

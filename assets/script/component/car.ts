@@ -50,6 +50,11 @@ export default class car extends cc.Component {
         this.node.zIndex = 999;
     } 
 
+    // 获取cardid
+    public getCardId() {
+        return this.carid;
+    }
+
     public setSkin() {
         // this.node.getComponent(cc.Sprite).spriteFrame = cc.loader.getRes("cars/" + (this.carid + 1) + ".png", cc.SpriteFrame);
         this.node.getComponent(cc.Sprite).spriteFrame = this.atlasFish.getSpriteFrame("ui-pack-fish-" + (this.carid + 1));

@@ -9,6 +9,9 @@ export default class Define {
     public static online: boolean = false;
     public static audioMgr: AudioMgr = null;
 
+    // car的最大成长id
+    public static cardIdMax = 33;
+
     // 每秒收益 当前等级速度*2.11=下一等级
     public static BasicCoin_s = 2; 
     
