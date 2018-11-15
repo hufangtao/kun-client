@@ -53,7 +53,7 @@ export default class global extends cc.Component {
 
     public static getNumString(num, l = 4) {
         let s = num.toString();
-        const n = Math.floor((s.length - 1) / 3);
+        const n = Math.floor((s.length - l) / 3);
         const dw = "KMGTPEZYB";
         if (n > 0) { 
             s = s.slice(0, s.length - n * 3) + dw[n - 1]; 
