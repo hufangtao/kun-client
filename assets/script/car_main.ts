@@ -270,8 +270,9 @@ export default class car_main extends cc.Component {
         num = Math.floor(num);
         // 显示离线收益
         this.showLiXianShouYi(num);
+        global.myLog("金币 - 离线收益 前", Define.userData.coin, num);
         Define.userData.coin += num;
-        global.myLog("金币 - 离线收益", Define.userData.coin);
+        global.myLog("金币 - 离线收益 后", Define.userData.coin);
         // 还原加速状态及时间
         if (jst > 2) {
             this.mNumJsTime = jst;
@@ -393,8 +394,9 @@ export default class car_main extends cc.Component {
         })));
         jb.setParent(this.nodJb);
         jb.active = true;
+        global.myLog("金币 - 增加金币 前", Define.userData.coin, Define.coin[data]);
         Define.userData.coin += Define.coin[data];
-        global.myLog("金币 - 增加金币", Define.userData.coin);
+        global.myLog("金币 - 增加金币 后", Define.userData.coin);
         this.JB_ShowCount();
     }
 
@@ -407,7 +409,9 @@ export default class car_main extends cc.Component {
         if (hspos.fuzzyEquals(data.pos, 60)) {
             // console.log("回收鱼鱼");
             data.car.huishou();
+            global.myLog("金币 - onTouchCar 前", Define.userData.coin);
             Define.userData.coin += 200;  // 回收价格
+            global.myLog("金币 - onTouchCar 后", Define.userData.coin);
             this.JB_ShowCount();
             this.mArrPark[data.car.index].car = null;
             return;
@@ -495,7 +499,9 @@ export default class car_main extends cc.Component {
         for (let i = 0; i < 18; i++) {
             Define.audioMgr.playSFX("move");
             if (!this.mArrPark[i].car) {
+                global.myLog("金币 - onBuyCar 前", Define.userData.coin);
                 Define.userData.coin -= coin;
+                global.myLog("金币 - onBuyCar 后", Define.userData.coin);
                 const n = cc.instantiate(this.pfbCar);
                 n.setParent(this.mNodParkNode);
                 this.mArrPark[i].car = n.getComponent("car");
@@ -721,7 +727,9 @@ export default class car_main extends cc.Component {
         } else {*/
         // 离线收益
         const num = Math.floor(Define.userData.mqcoin / 2 * time[id] * 60);
+        global.myLog("金币 - onShangCheng_click 前", Define.userData.coin);
         Define.userData.coin += num;
+        global.myLog("金币 - onShangCheng_click 后", Define.userData.coin);
         this.showLiXianShouYi(num);
         this.JB_ShowCount();
 
