@@ -30,7 +30,8 @@ export default class car_start extends cc.Component {
         this.labDocument.string = text;
 
         // 版本
-        this.labVersion.string =  "" + global.getNumString(495199); // "0.0.1";
+        // this.labVersion.string =  "" + global.getNumString(495199); // "0.0.1";
+        this.labVersion.string =  "0.0.2";
 
         cc.director.preloadScene("car_main");
     }
