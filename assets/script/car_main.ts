@@ -258,6 +258,7 @@ export default class car_main extends cc.Component {
         const lxt = Math.floor((Date.now() - Define.userData.lixiantime) / 1000);
         let num = 0;
         const self = this;
+        global.myLog("金币 - 离线收益 前1", Define.userData, lxt, jst);
         if (lxt > jst) {
             // 加速时间在离线时用完了.分别计算收益
             num = Define.userData.mqcoin * jst + Define.userData.mqcoin / 2 * (lxt - jst);
@@ -267,10 +268,11 @@ export default class car_main extends cc.Component {
             num = Define.userData.mqcoin * lxt;
             jst = jst - lxt;
         }
+        
         num = Math.floor(num);
         // 显示离线收益
         this.showLiXianShouYi(num);
-        global.myLog("金币 - 离线收益 前", Define.userData.coin, num);
+        global.myLog("金币 - 离线收益 前2", Define.userData.coin, num);
         Define.userData.coin += num;
         global.myLog("金币 - 离线收益 后", Define.userData.coin);
         // 还原加速状态及时间
