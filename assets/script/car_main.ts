@@ -253,7 +253,6 @@ export default class car_main extends cc.Component {
     }
 
     public huanyuan() {
-        
         // 计算离线后的加速时间
         let jst = Define.userData.jiasu_endtime > Define.userData.lixiantime ? Math.floor((Define.userData.jiasu_endtime - Define.userData.lixiantime) / 1000) : 0;
         const lxt = Math.floor((Date.now() - Define.userData.lixiantime) / 1000);
