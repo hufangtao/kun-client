@@ -122,7 +122,7 @@ export default class car_main extends cc.Component {
 
         this.onXinShou();
         // 每5分钟保存一次数据
-        this.schedule(this.savedata, 10);
+        // this.schedule(this.savedata, 10);
 
         return;
 
