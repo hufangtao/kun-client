@@ -57,7 +57,7 @@ export default class global extends cc.Component {
      *  @param  len 显示的位数为 len + 3 - 1
      *  @return {[type]}    [description]
      */
-    public static getNumString(num, len = 4) {
+    public static getNumString(num, len = 2) {
         let s = num.toString();
         const n = Math.floor((s.length - len) / 3);
         const dw = "KMGTPEZYB";
