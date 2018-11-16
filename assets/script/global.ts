@@ -51,9 +51,15 @@ export default class global extends cc.Component {
         return cc.v2(x, y);
     }
 
-    public static getNumString(num, l = 4) {
+    /** 
+     *  转换进制
+     *  @param  num 需要处理的数字
+     *  @param  len 显示的位数为 len + 3 - 1
+     *  @return {[type]}    [description]
+     */
+    public static getNumString(num, len = 2) {
         let s = num.toString();
-        const n = Math.floor((s.length - 1) / 3);
+        const n = Math.floor((s.length - len) / 3);
         const dw = "KMGTPEZYB";
         if (n > 0) { 
             s = s.slice(0, s.length - n * 3) + dw[n - 1]; 

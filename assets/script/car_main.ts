@@ -216,6 +216,7 @@ export default class car_main extends cc.Component {
         sendData.park           = s;
         sendData.gem            = Define.userData.gem;
         sendData.coin           = Define.userData.coin;
+        global.myLog("金币 - 上传数据", Define.userData.coin);
         sendData.lixiantime     = Define.userData.lixiantime;
         sendData.jiasu_endtime  = Define.userData.jiasu_endtime;
         sendData.ad_time        = Define.userData.ad_time;
@@ -270,6 +271,7 @@ export default class car_main extends cc.Component {
         // 显示离线收益
         this.showLiXianShouYi(num);
         Define.userData.coin += num;
+        global.myLog("金币 - 离线收益", Define.userData.coin);
         // 还原加速状态及时间
         if (jst > 2) {
             this.mNumJsTime = jst;
@@ -295,6 +297,7 @@ export default class car_main extends cc.Component {
     }
 
     public JB_ShowCount() {
+        global.myLog("金币 - 显示金币", Define.userData.coin);
         this.labJbCount2.string = global.getNumString(Define.userData.coin);
         if (this.mIsAnimEnd) {
             this.mIsAnimEnd = false;
@@ -329,7 +332,8 @@ export default class car_main extends cc.Component {
                 self.labJbTop.string = "";
                 self.labJbBottom.string = "";
                 // self.labJbCount.string = newstr;
-                self.labJbCount.string = global.getNumString(Number(newstr));
+                global.myLog("newstr", newstr);
+                self.labJbCount.string = global.getNumString(Define.userData.coin);
                 self.labJbBottom.node.y -= 32;
                 self.labJbTop.node.y -= 32;
                 self.mIsAnimEnd = true;
@@ -390,6 +394,7 @@ export default class car_main extends cc.Component {
         jb.setParent(this.nodJb);
         jb.active = true;
         Define.userData.coin += Define.coin[data];
+        global.myLog("金币 - 增加金币", Define.userData.coin);
         this.JB_ShowCount();
     }
 

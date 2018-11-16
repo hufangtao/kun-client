@@ -120,6 +120,9 @@ export default class kun_login extends cc.Component {
 				// console.log("xxxxxxxxxxxxxxxxxxxxxxxxxx");
 
 				Define.userData = ret.data;
+
+				global.myLog("金币 - 服务器数据", Define.userData.coin);
+
 				if (Define.userData.park !== null && Define.userData.park !== "") { 
 					Define.userData.park = JSON.parse(ret.data.park); 
 				} else { 
